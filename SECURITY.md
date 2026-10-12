@@ -11,8 +11,7 @@ public issue.
 All five analyzers scanned all nine skills of release 0.1.2 on 2026-10-12
 UTC. The static analyzers scanned a clean export of
 `60920aa6b476cf871e8b20f57a180d7f69e2805d`; Tessl reviewed the same skill
-content. Later commits change no skill directory. README badges show these
-results.
+content. Later commits change no skill directory.
 
 | Skill | <a href="https://github.com/bueti/skilllint" target="_blank" rel="noopener noreferrer">skilllint</a><br>0.3.0 | <a href="https://github.com/xyiqq/skilldoctor" target="_blank" rel="noopener noreferrer">skilldoctor</a><br>0.2.4 | <a href="https://github.com/NVIDIA/SkillSpector" target="_blank" rel="noopener noreferrer">SkillSpector</a><br>2.12.0 | <a href="https://github.com/cisco-ai-defense/skill-scanner" target="_blank" rel="noopener noreferrer">Cisco Skill Scanner</a><br>2.2.2 | <a href="https://docs.tessl.io/improving-your-skills/reviewing-skills" target="_blank" rel="noopener noreferrer">Tessl</a><br>0.114.0 |
 |---|---|---|---|---|---|
@@ -50,8 +49,24 @@ These checks cover their stated tools and scope, not every possible behavior.
 
 ## Independent reports
 
-- [Tessl quality review](https://tessl.io/registry/tpscloud/charmedimsure/0.1.2/quality)
-  and [eval results](https://tessl.io/registry/tpscloud/charmedimsure/0.1.2/evals)
-  for the published 0.1.2 plugin.
-- [Tessl security report](https://tessl.io/registry/tpscloud/charmedimsure/0.1.2/security):
-  the registry's security scan of 0.1.2, including Snyk's results.
+skills.sh runs three security audits on each published skill, and Tessl
+reviews each skill's quality. All nine skills passed every audit and scored
+100/100 on 2026-10-12. Each result links to that skill's live report; the
+README badges link to the same pages.
+
+| Skill | Gen Agent Trust Hub | Socket | Snyk | Tessl quality |
+|---|---|---|---|---|
+| [charmed-bubbles](skills/charmed-bubbles/SKILL.md) | [pass](https://www.skills.sh/tpscloud/charmedimsure/charmed-bubbles/security/agent-trust-hub) | [pass](https://www.skills.sh/tpscloud/charmedimsure/charmed-bubbles/security/socket) | [pass](https://www.skills.sh/tpscloud/charmedimsure/charmed-bubbles/security/snyk) | [100/100](https://tessl.io/registry/tpscloud/charmedimsure/quality/charmed-bubbles) |
+| [charmed-bubbletea](skills/charmed-bubbletea/SKILL.md) | [pass](https://www.skills.sh/tpscloud/charmedimsure/charmed-bubbletea/security/agent-trust-hub) | [pass](https://www.skills.sh/tpscloud/charmedimsure/charmed-bubbletea/security/socket) | [pass](https://www.skills.sh/tpscloud/charmedimsure/charmed-bubbletea/security/snyk) | [100/100](https://tessl.io/registry/tpscloud/charmedimsure/quality/charmed-bubbletea) |
+| [charmed-ecosystem](skills/charmed-ecosystem/SKILL.md) | [pass](https://www.skills.sh/tpscloud/charmedimsure/charmed-ecosystem/security/agent-trust-hub) | [pass](https://www.skills.sh/tpscloud/charmedimsure/charmed-ecosystem/security/socket) | [pass](https://www.skills.sh/tpscloud/charmedimsure/charmed-ecosystem/security/snyk) | [100/100](https://tessl.io/registry/tpscloud/charmedimsure/quality/charmed-ecosystem) |
+| [charmed-glamour](skills/charmed-glamour/SKILL.md) | [pass](https://www.skills.sh/tpscloud/charmedimsure/charmed-glamour/security/agent-trust-hub) | [pass](https://www.skills.sh/tpscloud/charmedimsure/charmed-glamour/security/socket) | [pass](https://www.skills.sh/tpscloud/charmedimsure/charmed-glamour/security/snyk) | [100/100](https://tessl.io/registry/tpscloud/charmedimsure/quality/charmed-glamour) |
+| [charmed-gum](skills/charmed-gum/SKILL.md) | [pass](https://www.skills.sh/tpscloud/charmedimsure/charmed-gum/security/agent-trust-hub) | [pass](https://www.skills.sh/tpscloud/charmedimsure/charmed-gum/security/socket) | [pass](https://www.skills.sh/tpscloud/charmedimsure/charmed-gum/security/snyk) | [100/100](https://tessl.io/registry/tpscloud/charmedimsure/quality/charmed-gum) |
+| [charmed-huh](skills/charmed-huh/SKILL.md) | [pass](https://www.skills.sh/tpscloud/charmedimsure/charmed-huh/security/agent-trust-hub) | [pass](https://www.skills.sh/tpscloud/charmedimsure/charmed-huh/security/socket) | [pass](https://www.skills.sh/tpscloud/charmedimsure/charmed-huh/security/snyk) | [100/100](https://tessl.io/registry/tpscloud/charmedimsure/quality/charmed-huh) |
+| [charmed-lipgloss](skills/charmed-lipgloss/SKILL.md) | [pass](https://www.skills.sh/tpscloud/charmedimsure/charmed-lipgloss/security/agent-trust-hub) | [pass](https://www.skills.sh/tpscloud/charmedimsure/charmed-lipgloss/security/socket) | [pass](https://www.skills.sh/tpscloud/charmedimsure/charmed-lipgloss/security/snyk) | [100/100](https://tessl.io/registry/tpscloud/charmedimsure/quality/charmed-lipgloss) |
+| [charmed-log](skills/charmed-log/SKILL.md) | [pass](https://www.skills.sh/tpscloud/charmedimsure/charmed-log/security/agent-trust-hub) | [pass](https://www.skills.sh/tpscloud/charmedimsure/charmed-log/security/socket) | [pass](https://www.skills.sh/tpscloud/charmedimsure/charmed-log/security/snyk) | [100/100](https://tessl.io/registry/tpscloud/charmedimsure/quality/charmed-log) |
+| [charmed-vhs](skills/charmed-vhs/SKILL.md) | [pass](https://www.skills.sh/tpscloud/charmedimsure/charmed-vhs/security/agent-trust-hub) | [pass](https://www.skills.sh/tpscloud/charmedimsure/charmed-vhs/security/socket) | [pass](https://www.skills.sh/tpscloud/charmedimsure/charmed-vhs/security/snyk) | [100/100](https://tessl.io/registry/tpscloud/charmedimsure/quality/charmed-vhs) |
+
+For the whole plugin, Tessl also publishes
+[eval results](https://tessl.io/registry/tpscloud/charmedimsure/0.1.2/evals)
+and a [security report](https://tessl.io/registry/tpscloud/charmedimsure/0.1.2/security)
+for 0.1.2.

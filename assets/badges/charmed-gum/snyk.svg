@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="88" height="22" role="img" aria-label="charmed-gum, skills.sh audit: Snyk: pass">
+  <title>charmed-gum, skills.sh audit: Snyk: pass</title>
+  <rect width="88" height="22" rx="3" fill="#6b50ff"/>
+  <path d="M44 0H85Q88 0 88 3V19Q88 22 85 22H44Z" fill="#00ffb2"/>
+  <g fill="#fffdf5" text-anchor="middle" font-family="Verdana,DejaVu Sans,sans-serif" font-size="11">
+    <text x="22" y="15">Snyk</text>
+    <text x="66" y="15" fill="#222">pass</text>
+  </g>
+</svg>
