@@ -2,6 +2,11 @@
 
 ![charmed, I'm sure](https://raw.githubusercontent.com/tpscloud/charmedimsure/main/assets/banner-terminal.png)
 
+[![version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Ftpscloud%2Fcharmedimsure%2Fmain%2F.tessl-plugin%2Fplugin.json&query=%24.version&label=version&prefix=v)](https://tessl.io/registry/tpscloud/charmedimsure)
+[![Skill quality](https://github.com/tpscloud/charmedimsure/actions/workflows/skill-quality.yml/badge.svg)](https://github.com/tpscloud/charmedimsure/actions/workflows/skill-quality.yml)
+[![skills.sh](https://www.skills.sh/b/tpscloud/charmedimsure)](https://www.skills.sh/tpscloud/charmedimsure)
+[![tessl](https://img.shields.io/endpoint?url=https%3A%2F%2Fapi.tessl.io%2Fv1%2Fbadges%2Ftpscloud%2Fcharmedimsure)](https://tessl.io/registry/tpscloud/charmedimsure)
+
 Skills for AI coding agents that cover the <a href="https://charm.land/" target="_blank" rel="noopener noreferrer">Charm ecosystem</a>:
 
 - <a href="https://github.com/charmbracelet/bubbletea" target="_blank" rel="noopener noreferrer">Bubble Tea</a>
