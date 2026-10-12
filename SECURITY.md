@@ -8,12 +8,11 @@ public issue.
 
 ## Scan results
 
-skilllint, skilldoctor, SkillSpector, and Cisco Skill Scanner scanned all
-nine skills from a clean export of `417556cb141cc2aea495ffe0c60d93f234f45dd3`
-on 2026-10-12 UTC. Tessl reviewed the 0.1.2 skill content on 2026-10-12. The
-0.1.2 changes trim prose in five skills and add one example program to
-charmed-bubbles; the four static analyzers have not been rerun on them yet.
-README badges show these results.
+All five analyzers scanned all nine skills of release 0.1.2 on 2026-10-12
+UTC. The static analyzers scanned a clean export of
+`60920aa6b476cf871e8b20f57a180d7f69e2805d`; Tessl reviewed the same skill
+content. Later commits change no skill directory. README badges show these
+results.
 
 | Skill | <a href="https://github.com/bueti/skilllint" target="_blank" rel="noopener noreferrer">skilllint</a><br>0.3.0 | <a href="https://github.com/xyiqq/skilldoctor" target="_blank" rel="noopener noreferrer">skilldoctor</a><br>0.2.4 | <a href="https://github.com/NVIDIA/SkillSpector" target="_blank" rel="noopener noreferrer">SkillSpector</a><br>2.12.0 | <a href="https://github.com/cisco-ai-defense/skill-scanner" target="_blank" rel="noopener noreferrer">Cisco Skill Scanner</a><br>2.2.2 | <a href="https://docs.tessl.io/improving-your-skills/reviewing-skills" target="_blank" rel="noopener noreferrer">Tessl</a><br>0.114.0 |
 |---|---|---|---|---|---|
