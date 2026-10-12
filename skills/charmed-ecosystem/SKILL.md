@@ -6,14 +6,7 @@ license: "MIT"
 
 # The Charm ecosystem
 
-Choose the right Charm library or CLI for a terminal project, get the v2
-`charm.land` import paths and pinned versions, and see how the pieces fit
-together before reaching for a library skill.
-
-Charm publishes Go libraries for terminal programs and a set of CLIs built on
-them. The core v2 UI libraries import from `charm.land`; supporting libraries
-can still use GitHub module paths. This skill routes to the per-library
-charmed-* skills and their
+This skill routes to the per-library charmed-* skills and their
 [examples](https://github.com/tpscloud/charmedimsure/tree/main/examples),
 which build against the pinned modules.
 
@@ -21,9 +14,8 @@ which build against the pinned modules.
 
 1. Match the task to a row in "Which library" below and note the skills it
    names.
-2. Check the project's `go.mod`. `github.com/charmbracelet/<name>` paths for
-   the UI libraries mean the pre-v2 APIs; keep them unless the user asks to
-   migrate, and then follow "Migrating from v1".
+2. Check the project's `go.mod` against "Import paths". Keep
+   pre-v2 paths unless the user asks to migrate.
 3. Add the pinned versions with the `go get` command below.
 4. Open the per-library skill for API detail and start from the example it
    links.
@@ -31,34 +23,34 @@ which build against the pinned modules.
    Charm libraries, run `go list -m all` and look for a v1 and v2 mix of the
    libraries that share types.
 
-## Import paths and versions
+## Import paths
 
-| Library | Import | Pinned here | Skill |
-|---------|--------|-------------|-------|
-| [Bubble Tea](https://github.com/charmbracelet/bubbletea) | `charm.land/bubbletea/v2` (alias `tea`) | v2.1.0 | [charmed-bubbletea](https://github.com/tpscloud/charmedimsure/blob/main/skills/charmed-bubbletea/SKILL.md) |
-| [Bubbles](https://github.com/charmbracelet/bubbles) | `charm.land/bubbles/v2/<component>` | v2.2.1 | [charmed-bubbles](https://github.com/tpscloud/charmedimsure/blob/main/skills/charmed-bubbles/SKILL.md) |
-| [Lip Gloss](https://github.com/charmbracelet/lipgloss) | `charm.land/lipgloss/v2` (+ `/table`, `/tree`, `/list`, `/compat`) | v2.0.6 | [charmed-lipgloss](https://github.com/tpscloud/charmedimsure/blob/main/skills/charmed-lipgloss/SKILL.md) |
-| [Huh](https://github.com/charmbracelet/huh) | `charm.land/huh/v2` (+ `/spinner`) | v2.0.3 | [charmed-huh](https://github.com/tpscloud/charmedimsure/blob/main/skills/charmed-huh/SKILL.md) |
-| [Glamour](https://github.com/charmbracelet/glamour) | `charm.land/glamour/v2` (+ `/ansi`, `/styles`) | v2.0.1 | [charmed-glamour](https://github.com/tpscloud/charmedimsure/blob/main/skills/charmed-glamour/SKILL.md) |
-| [Log](https://github.com/charmbracelet/log) | `charm.land/log/v2` | v2.0.1 | [charmed-log](https://github.com/tpscloud/charmedimsure/blob/main/skills/charmed-log/SKILL.md) |
-| [colorprofile](https://github.com/charmbracelet/colorprofile) | `github.com/charmbracelet/colorprofile` | v0.4.3 | used by the above |
-| [Harmonica](https://github.com/charmbracelet/harmonica) | `github.com/charmbracelet/harmonica` | v0.2.0 | spring animation, used by progress |
-| [Wish](https://github.com/charmbracelet/wish) | `charm.land/wish/v2` | Not pinned | SSH apps (not covered here) |
-
-The versions above, except Wish, are pinned in the
-[example module](https://github.com/tpscloud/charmedimsure/blob/main/examples/go.mod).
-Wish is listed for orientation only. It is not a dependency of the example
-module, and this repository has no SSH example.
+| Library | Import | Skill |
+|---------|--------|-------|
+| [Bubble Tea](https://github.com/charmbracelet/bubbletea) | `charm.land/bubbletea/v2` (alias `tea`) | [charmed-bubbletea](https://github.com/tpscloud/charmedimsure/blob/main/skills/charmed-bubbletea/SKILL.md) |
+| [Bubbles](https://github.com/charmbracelet/bubbles) | `charm.land/bubbles/v2/<component>` | [charmed-bubbles](https://github.com/tpscloud/charmedimsure/blob/main/skills/charmed-bubbles/SKILL.md) |
+| [Lip Gloss](https://github.com/charmbracelet/lipgloss) | `charm.land/lipgloss/v2` (+ `/table`, `/tree`, `/list`, `/compat`) | [charmed-lipgloss](https://github.com/tpscloud/charmedimsure/blob/main/skills/charmed-lipgloss/SKILL.md) |
+| [Huh](https://github.com/charmbracelet/huh) | `charm.land/huh/v2` (+ `/spinner`) | [charmed-huh](https://github.com/tpscloud/charmedimsure/blob/main/skills/charmed-huh/SKILL.md) |
+| [Glamour](https://github.com/charmbracelet/glamour) | `charm.land/glamour/v2` (+ `/ansi`, `/styles`) | [charmed-glamour](https://github.com/tpscloud/charmedimsure/blob/main/skills/charmed-glamour/SKILL.md) |
+| [Log](https://github.com/charmbracelet/log) | `charm.land/log/v2` | [charmed-log](https://github.com/tpscloud/charmedimsure/blob/main/skills/charmed-log/SKILL.md) |
+| [colorprofile](https://github.com/charmbracelet/colorprofile) | `github.com/charmbracelet/colorprofile` | used by the above |
+| [Harmonica](https://github.com/charmbracelet/harmonica) | `github.com/charmbracelet/harmonica` | spring animation, used by progress |
+| [Wish](https://github.com/charmbracelet/wish) | `charm.land/wish/v2` | SSH apps; orientation only, not pinned or covered |
 
 For Bubble Tea, Bubbles, Lip Gloss, Huh, Glamour, and Log, the older
 `github.com/charmbracelet/<name>` paths belong to the pre-v2 APIs.
 This rule does not apply to colorprofile or Harmonica, which keep their
 GitHub module paths. Two major versions can coexist in one binary as
 separate modules, but the libraries that share types (Bubble Tea, Bubbles,
-Huh, Lip Gloss) have to move together, and a v2 Log or Glamour needs v2
-Lip Gloss.
+Huh, Lip Gloss) have to move together: a v1 `lipgloss.Style` does not
+satisfy a v2 signature. A v2 Log or Glamour needs v2 Lip Gloss.
 
-From an existing application module, select the tested core UI versions with:
+## Pinned versions
+
+Verified on 2026-10-12 and pinned in the
+[example module](https://github.com/tpscloud/charmedimsure/blob/main/examples/go.mod),
+which also pins colorprofile v0.4.3 and Harmonica v0.2.0. From an existing
+application module, select the tested core UI versions with:
 
 ```sh
 go get charm.land/bubbletea/v2@v2.1.0 charm.land/bubbles/v2@v2.2.1 \
@@ -152,11 +144,8 @@ before printing anything.
 
 ## Migrating from v1
 
-Move Bubble Tea, Bubbles, Huh, and Lip Gloss in one step, since they share
-`tea.Model`, `tea.Cmd`, and `lipgloss.Style`; Log and Glamour only need a
-matching Lip Gloss major. Start by replacing `github.com/charmbracelet/X`
-with `charm.land/X/v2` for bubbletea, bubbles, lipgloss, huh, glamour, and
-log; subpackages keep their suffix (`bubbles/v2/list`, `lipgloss/v2/table`).
+Move the libraries that share types in one step. Subpackages keep their
+suffix (`bubbles/v2/list`, `lipgloss/v2/table`).
 
 Read [references/migration.md](references/migration.md) for the
 per-library API changes (Bubble Tea keys, mouse, and view fields; Lip Gloss
@@ -194,8 +183,6 @@ the pinned upstream upgrade guides, and the test loop to run after each step.
 
 ## Mistakes that cost time
 
-- Passing v1 and v2 values of the same library across an API boundary. A v1
-  `lipgloss.Style` will not satisfy a v2 signature and vice versa.
 - Using `@latest` instead of the pinned versions. It selects versions these
   skills have not been checked against.
 - Trusting upstream prose over `go doc`. Some READMEs and doc comments still
