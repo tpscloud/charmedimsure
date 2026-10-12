@@ -6,6 +6,10 @@ license: "MIT"
 
 # Bubble Tea v2
 
+Build terminal user interfaces in Go with Bubble Tea v2: a Model, Update,
+View loop, commands for I/O, and a declarative `tea.View` for alt screen,
+mouse, cursor, and title, with testing and v1 migration covered.
+
 Import as `tea "charm.land/bubbletea/v2"`, pinned to v2.1.0. Go blocks headed
 `// examples/...` are trimmed from
 [complete programs](https://github.com/tpscloud/charmedimsure-skill/tree/main/examples/charmed-bubbletea)
