@@ -6,6 +6,10 @@ license: "MIT"
 
 # The Charm ecosystem
 
+Choose the right Charm library or CLI for a terminal project, get the v2
+`charm.land` import paths and pinned versions, and see how the pieces fit
+together before reaching for a library skill.
+
 Charm publishes Go libraries for terminal programs and a set of CLIs built on
 them. The core v2 UI libraries import from `charm.land`; supporting libraries
 can still use GitHub module paths. This skill routes to the per-library
