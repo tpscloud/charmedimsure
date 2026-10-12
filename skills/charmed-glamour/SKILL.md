@@ -6,10 +6,6 @@ license: "MIT"
 
 # Glamour v2
 
-Render Markdown as styled terminal text in Go with Glamour v2, choosing a
-style for light or dark terminals, wrapping, custom styles, and a scrolling
-viewer inside Bubble Tea.
-
 Import as `"charm.land/glamour/v2"`; styles live in
 `"charm.land/glamour/v2/styles"` and the config types in
 `"charm.land/glamour/v2/ansi"`. Pinned and verified against v2.0.1. Go blocks
@@ -28,15 +24,13 @@ migrate.
    `lipgloss.HasDarkBackground(os.Stdin, os.Stdout)`; inside, read
    `tea.BackgroundColorMsg`.
 2. Build one renderer with `glamour.NewTermRenderer(glamour.WithStandardStyle(style), glamour.WithWordWrap(n))`
-   and reuse it. Its error means an unknown style name or an unreadable
-   style path.
+   and reuse it.
 3. Render the Markdown with `r.Render(md)` and handle the error.
 4. Print with `lipgloss.Print` outside Bubble Tea; inside, hand the string to
    a viewport or the view.
 5. Check in a real terminal: light and dark styles, narrow widths, tables,
-   code blocks, and links. Wrong colors mean the output skipped
-   `lipgloss.Print`; unexpected wrapping means the wrap width is too small
-   for the content (see Mistakes).
+   code blocks, and links. For wrong colors or unexpected wrapping, see
+   Mistakes.
 
 ## Rendering
 
@@ -50,7 +44,7 @@ if err != nil {
     fmt.Fprintln(os.Stderr, err)
     os.Exit(1)
 }
-lipgloss.Print(out) // not fmt.Print
+lipgloss.Print(out)
 
 style := "dark"
 if !lipgloss.HasDarkBackground(os.Stdin, os.Stdout) {
@@ -73,17 +67,12 @@ if err != nil {
 lipgloss.Print(out)
 ```
 
-Printing through Lip Gloss downsamples colors to what the terminal can show.
-Inside Bubble Tea, output goes through the program's renderer, which
-downsamples for you.
-
-Built in style names: `dark`, `light`, `pink`, `dracula`, `tokyo-night`,
-`ascii` (no color), `notty`. The options used most: `WithWordWrap(n)`
+The options used most: `WithWordWrap(n)`
 (default 80; 0 disables), `WithEmoji()` (`:tada:` becomes the character),
 and `WithStylePath(s)` (a name or a path to a JSON file).
 
-Read [references/options.md](references/options.md) for every renderer
-option, `GLAMOUR_STYLE` environment configuration, `RenderBytes`, and the
+Read [references/options.md](references/options.md) for the other built in
+style names, every renderer option, `GLAMOUR_STYLE` environment configuration, `RenderBytes`, and the
 buffered `Write` and `Close` API.
 
 ## Custom styles
@@ -141,7 +130,7 @@ func (m model) render() (string, error) {
     }
     r, err := glamour.NewTermRenderer(
         glamour.WithStandardStyle(style),
-        glamour.WithWordWrap(max(m.width-2, minWrap)),   // 0 would disable wrapping
+        glamour.WithWordWrap(max(m.width-2, minWrap)),
     )
     if err != nil {
         return "", err
@@ -171,8 +160,8 @@ case tea.WindowSizeMsg:
 
 `WindowSizeMsg` and `BackgroundColorMsg` arrive in either order, so both
 handlers re-render; otherwise a dark terminal keeps the light rendering
-until the next resize.  Clamp the wrap width: `WithWordWrap(0)` turns
-wrapping off, and a negative value is meaningless.  Rendering is not free on
+until the next resize.  `minWrap` keeps the wrap width positive on tiny
+terminals.  Rendering is not free on
 large documents; do it on resize, theme, and content change, not on every
 frame.
 
@@ -184,7 +173,6 @@ frame.
 | `glamour.WithAutoStyle()`              | removed; pass `WithStandardStyle` (see Mistakes)     |
 | `glamour.WithColorProfile(p)`          | removed; print with `lipgloss.Print`                 |
 | `StylePrimitive.Overlined`             | removed                                              |
-| `fmt.Print(out)`                       | `lipgloss.Print(out)` when not inside Bubble Tea     |
 
 Custom `ansi.MarginWriter` users must call `Close()`. See the
 [v2.0.1 upgrade guide](https://github.com/charmbracelet/glamour/blob/v2.0.1/UPGRADE_GUIDE_V2.md)
@@ -204,8 +192,11 @@ work.
   `NewTermRenderer()` does not select a named style by itself. Detect light
   or dark yourself and pass `WithStandardStyle` explicitly, even where the
   upgrade guide suggests an implicit dark style.
-- Printing with `fmt` and getting wrong colors on a 256 color terminal.
+- Printing with `fmt` outside Bubble Tea. Only the `lipgloss.Print` family
+  downsamples colors to what the terminal can show, so `fmt.Print` gives
+  wrong colors on a 256 color terminal. Inside Bubble Tea the program's
+  renderer downsamples for you.
 - Rendering a wide table or long code block with `WithWordWrap` smaller
-  than the content and being surprised by the wrapping. Tables wrap by default;
-  `WithTableWrap(false)` truncates overflowing cells with an ellipsis.
+  than the content and being surprised by the wrapping. For tables, see
+  `WithTableWrap` in [references/options.md](references/options.md).
 - Re-creating a renderer for every call in a hot path.  Build once, reuse.
