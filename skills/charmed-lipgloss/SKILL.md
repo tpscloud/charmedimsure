@@ -6,6 +6,10 @@ license: "MIT"
 
 # Lip Gloss v2
 
+Style and lay out terminal text in Go with Lip Gloss v2: colors that adapt to
+the background, borders, padding, alignment, joined and layered blocks,
+tables, trees, and lists, measured in terminal cells.
+
 Import as `"charm.land/lipgloss/v2"`; subpackages are `table`, `tree`, `list`,
 and `compat`. Pinned and verified against v2.0.6. Go blocks headed
 `// examples/...` are trimmed from
