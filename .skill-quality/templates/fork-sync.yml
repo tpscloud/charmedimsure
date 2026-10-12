@@ -1,0 +1,47 @@
+# Copyright 2026 John Deatherage (@coversheets). SPDX-License-Identifier: MIT
+#
+# `skillforge install` does not enable this workflow. Copy it to
+# .github/workflows/fork-sync.yml in the one repository that holds
+# .skill-forks.json, then add the SKILLFORGE_FORK_TOKEN secret described in the
+# Skillforge README. SKILLFORGE_NOTIFY_WEBHOOK is optional.
+name: Fork sync
+
+on:
+  schedule:
+    - cron: "17 5 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: fork-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-go@90ad2b35f69faf97585ad74d28fa006d2739b7af
+        with:
+          go-version-file: .skill-quality/go.mod
+          cache-dependency-path: .skill-quality/go.sum
+      - name: Build Skillforge
+        run: go -C .skill-quality build -mod=readonly -trimpath -o "$RUNNER_TEMP/skillforge" .
+      - name: Fast-forward declared forks
+        env:
+          SKILLFORGE_FORK_TOKEN: ${{ secrets.SKILLFORGE_FORK_TOKEN }}
+          SKILLFORGE_NOTIFY_WEBHOOK: ${{ secrets.SKILLFORGE_NOTIFY_WEBHOOK }}
+        run: '"$RUNNER_TEMP/skillforge" fork-sync . --output "$RUNNER_TEMP/fork-sync.json"'
+      - name: Save fork sync report
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: fork-sync-${{ github.run_id }}
+          path: ${{ runner.temp }}/fork-sync.json
+          if-no-files-found: error
+          retention-days: 30

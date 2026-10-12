@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "skills": [
+    "skills/charmed-bubbles/SKILL.md",
+    "skills/charmed-bubbletea/SKILL.md",
+    "skills/charmed-ecosystem/SKILL.md",
+    "skills/charmed-glamour/SKILL.md",
+    "skills/charmed-gum/SKILL.md",
+    "skills/charmed-huh/SKILL.md",
+    "skills/charmed-lipgloss/SKILL.md",
+    "skills/charmed-log/SKILL.md",
+    "skills/charmed-vhs/SKILL.md"
+  ],
+  "checks": [
+    {
+      "name": "Build and verify Charm examples",
+      "command": [
+        "bash",
+        "scripts/check.sh"
+      ]
+    }
+  ],
+  "frontmatter": {
+    "allowedKeys": [
+      "name",
+      "description",
+      "license"
+    ],
+    "requireDirectoryName": true
+  }
+}

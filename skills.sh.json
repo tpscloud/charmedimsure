@@ -1,0 +1,35 @@
+{
+  "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
+  "notGrouped": "bottom",
+  "groupings": [
+    {
+      "title": "Choose the Charm tools",
+      "skills": [
+        "charmed-ecosystem"
+      ]
+    },
+    {
+      "title": "Build terminal applications",
+      "skills": [
+        "charmed-bubbletea",
+        "charmed-bubbles",
+        "charmed-lipgloss",
+        "charmed-huh"
+      ]
+    },
+    {
+      "title": "Render text and logs",
+      "skills": [
+        "charmed-glamour",
+        "charmed-log"
+      ]
+    },
+    {
+      "title": "Shell scripts and recordings",
+      "skills": [
+        "charmed-gum",
+        "charmed-vhs"
+      ]
+    }
+  ]
+}

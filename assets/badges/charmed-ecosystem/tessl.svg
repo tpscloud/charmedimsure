@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="116" height="22" role="img" aria-label="charmed-ecosystem, recorded scan: Tessl: 100/100">
+  <title>charmed-ecosystem, recorded scan: Tessl: 100/100</title>
+  <rect width="116" height="22" rx="3" fill="#6b50ff"/>
+  <path d="M51 0H113Q116 0 116 3V19Q116 22 113 22H51Z" fill="#00ffb2"/>
+  <g fill="#fffdf5" text-anchor="middle" font-family="Verdana,DejaVu Sans,sans-serif" font-size="11">
+    <text x="25.5" y="15">Tessl</text>
+    <text x="83.5" y="15" fill="#222">100/100</text>
+  </g>
+</svg>

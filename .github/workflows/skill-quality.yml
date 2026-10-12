@@ -1,0 +1,53 @@
+# Copyright 2026 John Deatherage (@coversheets). SPDX-License-Identifier: MIT
+name: Skill quality
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: skill-quality-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-go@90ad2b35f69faf97585ad74d28fa006d2739b7af
+        with:
+          go-version-file: .skill-quality/go.mod
+          cache-dependency-path: .skill-quality/go.sum
+      - name: Build Skillforge
+        run: go -C .skill-quality build -mod=readonly -trimpath -o "$RUNNER_TEMP/skillforge" .
+      - name: Validate skills and repository configuration
+        run: '"$RUNNER_TEMP/skillforge" validate . --output "$RUNNER_TEMP/quality-report.json"'
+      - name: Run repository checks
+        run: '"$RUNNER_TEMP/skillforge" check .'
+      - name: Scan history and current files
+        if: ${{ !cancelled() }}
+        run: '"$RUNNER_TEMP/skillforge" scan . --output-directory "$RUNNER_TEMP/skill-secrets"'
+      - name: Save validation evidence
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: skill-quality-${{ github.sha }}
+          path: ${{ runner.temp }}/quality-report.json
+          if-no-files-found: error
+          retention-days: 30
+      - name: Save scan summary
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: skill-secrets-${{ github.sha }}
+          path: ${{ runner.temp }}/skill-secrets/summary.json
+          if-no-files-found: error
+          retention-days: 30

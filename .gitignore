@@ -1,0 +1,11 @@
+# build output from examples
+/examples/bin/
+*.test
+.DS_Store
+__pycache__/
+*.pyc
+
+# vhs TUI tape outputs (skills/charmed-vhs)
+/examples/vhs-app
+/examples/tui.gif
+/examples/tui.png
