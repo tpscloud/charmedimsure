@@ -1,10 +1,10 @@
 # TODO
 
-- [ ] Publish `tpscloud/charmedimsure` to Tessl: add a workspace API key as the
-  `TESSL_TOKEN` repository secret, then run the "Publish to Tessl" workflow.
-  Publishing through the action hides the community copies Tessl already
-  indexed from this repository. Once the results are public, point the
-  README's Tessl badges at them instead of SECURITY.md.
+- [ ] Point the README's Tessl badges at the
+  [Tessl registry page](https://tessl.io/registry/tpscloud/charmedimsure)
+  once it shows scores, instead of SECURITY.md. New plugin versions publish
+  from the "Publish to Tessl" workflow on each GitHub release; bump the
+  version in `.tessl-plugin/plugin.json` first.
 - [ ] Plan how skills follow upstream releases. Decide how a new Charm library,
   gum, or vhs release is detected (for example a scheduled
   `go list -m -u` and release check), who reviews the API diff, and the order:
