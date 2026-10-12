@@ -6,6 +6,10 @@ license: "MIT"
 
 # vhs
 
+Record terminal demos as GIF, MP4, or WebM from a `.tape` script with vhs,
+and check terminal output in tests with golden files, without uploading
+anything by accident.
+
 The documented baseline is [vhs 0.12.1](https://github.com/charmbracelet/vhs/tree/v0.12.1);
 check `vhs --version` and validate with the version you will use to render.
 VHS needs `ttyd` and `ffmpeg` on its process PATH; package-manager
