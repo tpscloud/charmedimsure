@@ -1,9 +1,16 @@
 # Copyright 2026 John Deatherage (@coversheets). SPDX-License-Identifier: MIT
 name: Publish to Tessl
 
+# Publishing runs Tessl's evals, which cost credits. Only plugin content
+# starts this workflow, and it publishes only when the version in
+# .tessl-plugin/plugin.json is not in the registry yet.
 on:
-  release:
-    types: [published]
+  push:
+    branches: [main]
+    paths:
+      - "skills/**"
+      - "evals/**"
+      - ".tessl-plugin/plugin.json"
   workflow_dispatch:
 
 permissions:
@@ -32,5 +39,16 @@ jobs:
         run: tessl whoami
       - name: Lint the plugin manifest
         run: tessl plugin lint .
+      - name: Skip versions that are already published
+        id: version
+        run: |
+          version="$(jq -r .version .tessl-plugin/plugin.json)"
+          if tessl plugin info "tpscloud/charmedimsure@${version}" >/dev/null 2>&1; then
+            echo "Version ${version} is already published; bump it to publish." >> "$GITHUB_STEP_SUMMARY"
+            echo "publish=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "publish=true" >> "$GITHUB_OUTPUT"
+          fi
       - name: Publish tpscloud/charmedimsure
+        if: steps.version.outputs.publish == 'true'
         run: tessl plugin publish .

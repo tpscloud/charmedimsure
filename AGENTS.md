@@ -92,6 +92,15 @@ The gum and vhs versions in the table are documentation baselines; the check
 does not pin or run those binaries. Run changed shell snippets through
 `bash -n` and changed tapes through `vhs validate` with the baseline version.
 
+## Publishing to Tessl
+
+The "Publish to Tessl" workflow runs on pushes to `main` that change
+`skills/`, `evals/`, or `.tessl-plugin/plugin.json`, and publishes only when
+the version in `.tessl-plugin/plugin.json` is not in the registry yet.
+Publishing runs every eval scenario, which costs Tessl credits, so bump the
+version (and the one in `.claude-plugin/plugin.json`) only for a release.
+Documentation changes never publish.
+
 ## Commits
 
 One skill per commit.  Subject line names the skill and what changed, for
