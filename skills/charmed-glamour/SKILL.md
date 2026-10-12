@@ -6,6 +6,10 @@ license: "MIT"
 
 # Glamour v2
 
+Render Markdown as styled terminal text in Go with Glamour v2, choosing a
+style for light or dark terminals, wrapping, custom styles, and a scrolling
+viewer inside Bubble Tea.
+
 Import as `"charm.land/glamour/v2"`; styles live in
 `"charm.land/glamour/v2/styles"` and the config types in
 `"charm.land/glamour/v2/ansi"`. Pinned and verified against v2.0.1. Go blocks
