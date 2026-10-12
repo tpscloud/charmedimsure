@@ -6,6 +6,10 @@ license: "MIT"
 
 # Charm Log v2
 
+Add structured, leveled, colored logging to a Go CLI or TUI with Charm Log
+v2, including JSON and logfmt output, slog adapters, and plain-text log files
+from inside Bubble Tea.
+
 Import as `"charm.land/log/v2"`. Pinned and verified against v2.0.1. Go blocks
 headed `// examples/...` are trimmed from
 [complete programs](https://github.com/tpscloud/charmedimsure-skill/tree/main/examples/charmed-log)
