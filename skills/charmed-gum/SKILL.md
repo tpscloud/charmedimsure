@@ -6,6 +6,10 @@ license: "MIT"
 
 # gum
 
+Add prompts, pickers, spinners, tables, and styled output to Bash scripts
+with the gum CLI, with exact flags, keys, and exit codes so scripts handle
+cancellation correctly.
+
 Written from gum 2.0.2 (its source, `gum --help`, and each subcommand's help),
 the baseline for this skill; run `gum --version` first (2.x prints
 `gum version 2.0.2`) and confirm a flag with `gum <cmd> --help` on the
