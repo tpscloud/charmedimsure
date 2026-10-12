@@ -6,10 +6,6 @@ license: "MIT"
 
 # Bubble Tea v2
 
-Build terminal user interfaces in Go with Bubble Tea v2: a Model, Update,
-View loop, commands for I/O, and a declarative `tea.View` for alt screen,
-mouse, cursor, and title, with testing and v1 migration covered.
-
 Import as `tea "charm.land/bubbletea/v2"`, pinned to v2.1.0. Go blocks headed
 `// examples/...` are trimmed from
 [complete programs](https://github.com/tpscloud/charmedimsure/tree/main/examples/charmed-bubbletea)
@@ -31,36 +27,17 @@ migrate.
    follow up work as a `tea.Cmd`.  Handle `ctrl+c` and `tea.WindowSizeMsg`.
 4. Return a `tea.View` from `View`, setting terminal features such as
    `AltScreen` and `MouseMode` as fields.
-5. Run with `tea.NewProgram(m).Run()` and check its error.  Then run
-   `go vet ./...` and `go test ./...` from the application module; fix
-   failures and rerun until both pass, and try keys and resizing in a real
-   terminal.
+5. Run with `tea.NewProgram(m).Run()` and check its error.
+6. Validate: run `go vet ./...` and `go test ./...` from the application
+   module, fix failures, and rerun until both pass.  Then try keys and
+   resizing in a real terminal.
 
 ## The loop
 
-A program is one value that implements three methods.  The runtime owns the
-loop: it calls `Init` once, then `Update` for every message, then `View`
-after each update, and it repaints only what changed.
-
-```go
-// excerpt: the core types from tea.go in the module, not an example file
-type Model interface {
-    Init() Cmd                    // first command to run, or nil
-    Update(Msg) (Model, Cmd)      // react to a message, return new state
-    View() View                   // describe the screen
-}
-type Msg = any                    // anything can be a message
-type Cmd func() Msg               // a function that does work and returns a message
-```
-
-Three rules that follow from this:
-
-1. State changes only inside `Update`.  Never touch the model from a
-   goroutine.  Use a `Cmd` or `Program.Send` to get data in.
-2. `Update` must return fast.  Blocking calls (HTTP, disk, sleep) go in a
-   `Cmd`; the runtime runs commands on their own goroutines.
-3. `View` is pure.  It reads the model and returns a `tea.View`.  Do not do
-   work there.
+The v2 delta from the usual Elm loop: `View` returns a `tea.View`, not a
+string, and the runtime repaints only what changed.  `Msg` is `any`; `Cmd`
+is `func() Msg`, run on its own goroutine.  Keep state changes in `Update`
+and blocking work in commands.
 
 Minimal program ([examples/charmed-bubbletea/counter/main.go](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-bubbletea/counter/main.go)):
 
@@ -198,7 +175,7 @@ Built in commands worth knowing: `tea.Quit`, `tea.Interrupt` (Run returns
 screen), `tea.SetClipboard`, `tea.ReadClipboard`, `tea.RequestWindowSize`,
 `tea.RequestBackgroundColor`, `tea.ExecProcess`.  Read
 [references/api.md](references/api.md) for every message type, command,
-program option, and constant group in v2.1.0.
+program option, and constant group.
 
 Read [references/async.md](references/async.md) for repeating timers
 (`tea.Tick`, `tea.Every`), feeding the program from a channel or
@@ -231,8 +208,7 @@ placing a text input's real cursor in the view.
 - For headless program tests, supply input, captured output, and a fixed window size.
 - Log to a file while the renderer owns stdout.
 
-Run `go test ./...` from your application module, fix failures, and rerun.
-See [testing and debugging](references/testing.md) for unit tests, headless runs,
+Validate as in workflow step 6.  See [testing and debugging](references/testing.md) for unit tests, headless runs,
 color-free output, and file logging.
 
 ## Migrating from v1
@@ -244,12 +220,11 @@ split into concrete types, and every program option or command that toggled
 a terminal feature (alt screen, mouse, title, cursor) becomes a `tea.View`
 field.  The `tea.View` change is the biggest one.  The search and replace
 table, in order, is in [references/api.md](references/api.md#migrating-from-v1); the
-[v2.1.0 upgrade guide](https://github.com/charmbracelet/bubbletea/blob/v2.1.0/UPGRADE_GUIDE_V2.md)
+[upgrade guide](https://github.com/charmbracelet/bubbletea/blob/v2.1.0/UPGRADE_GUIDE_V2.md)
 has the complete list.
 
-After applying the table, run `go test ./...` in your application module. Fix
-compile and test failures, then rerun. Check remaining v1-only calls such as
-`tea.EnterAltScreen`, and exercise keys, resizing, and timers in a terminal.
+After applying the table, validate as in workflow step 6, check remaining
+v1-only calls such as `tea.EnterAltScreen`, and exercise timers too.
 `tea.KeyMsg` remains valid as an interface in v2; do not remove every occurrence.
 
 Projects pinned to a v2 release before v2.1.0 lack `ProgramStatus` and a
