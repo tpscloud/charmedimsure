@@ -10,10 +10,9 @@ Add structured, leveled, colored logging to a Go CLI or TUI with Charm Log
 v2, including JSON and logfmt output, slog adapters, and plain-text log files
 from inside Bubble Tea.
 
-Import as `"charm.land/log/v2"`. Pinned and verified against v2.0.1. Go blocks
-headed `// examples/...` are trimmed from
+Import as `"charm.land/log/v2"`. Go blocks are trimmed from
 [complete programs](https://github.com/tpscloud/charmedimsure/tree/main/examples/charmed-log)
-that build against the pinned modules; `// excerpt` blocks are API sketches.
+that build against the pinned modules.
 
 If the project's `go.mod` still requires `github.com/charmbracelet/log`
 (pre-v2), the v2 APIs here do not apply.  Use `go doc` against the
@@ -187,7 +186,8 @@ The program creates `debug.log` in its working directory. Run
 | `SetColorProfile(termenv.TrueColor)`        | `SetColorProfile(colorprofile.TrueColor)`      |
 | `Styles` fields of v1 `lipgloss.Style`      | `charm.land/lipgloss/v2` styles                |
 
-The [v2.0.1 upgrade guide](https://github.com/charmbracelet/log/blob/v2.0.1/UPGRADE_GUIDE_V2.md)
+These skills are pinned to and verified against v2.0.1. The
+[v2.0.1 upgrade guide](https://github.com/charmbracelet/log/blob/v2.0.1/UPGRADE_GUIDE_V2.md)
 covers the changes. `termenv` and `go-osc52` are no longer dependencies.
 After migrating, run your application's tests, fix failures, and rerun, then
 do the checks in step 5 of the workflow.
