@@ -6,6 +6,10 @@ license: "MIT"
 
 # Bubbles v2
 
+Add ready-made TUI components to a Bubble Tea v2 program: lists, tables,
+text inputs, viewports, spinners, progress bars, file pickers, trees, and
+timers, each wired through the same Init, Update, and View contract.
+
 Import each component from its own package (`"charm.land/bubbles/v2/list"`,
 `.../table`, `.../viewport`, and so on), pinned to v2.2.1. Go blocks headed
 `// examples/...` are trimmed from
