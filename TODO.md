@@ -1,13 +1,10 @@
 # TODO
 
-- [ ] Publish the release as `tpscloud/charmedimsure-skill` on `main`. The
-  skills link to examples at that path.
-- [ ] After publishing, run `npx skills add tpscloud/charmedimsure-skill --list`
-  from a clean directory and check that all nine skills appear.
-- [ ] Decide whether to publish `tpscloud/charmedimsure` to the Tessl registry.
-  The manifest is private; making a plugin public cannot be undone. Once the
-  Tessl results are public, point the README's Tessl badges at them instead of
-  SECURITY.md.
+- [ ] Publish `tpscloud/charmedimsure` to Tessl: add a workspace API key as the
+  `TESSL_TOKEN` repository secret, then run the "Publish to Tessl" workflow.
+  Publishing through the action hides the community copies Tessl already
+  indexed from this repository. Once the results are public, point the
+  README's Tessl badges at them instead of SECURITY.md.
 - [ ] Plan how skills follow upstream releases. Decide how a new Charm library,
   gum, or vhs release is detected (for example a scheduled
   `go list -m -u` and release check), who reviews the API diff, and the order:
