@@ -6,6 +6,9 @@ license: "MIT"
 
 # Huh v2
 
+Build terminal forms and prompts in Go with Huh v2: typed fields, validation,
+dynamic options, themes, accessible mode, and forms embedded in Bubble Tea.
+
 Import as `"charm.land/huh/v2"`; the spinner is `"charm.land/huh/v2/spinner"`.
 Pinned and verified against v2.0.3. Go blocks headed `// examples/...` are
 trimmed from
