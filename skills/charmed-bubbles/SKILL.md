@@ -14,8 +14,7 @@ Import each component from its own package (`"charm.land/bubbles/v2/list"`,
 `.../table`, `.../viewport`, and so on), pinned to v2.2.1. Go blocks headed
 `// examples/...` are trimmed from
 [complete programs](https://github.com/tpscloud/charmedimsure/tree/main/examples) that build against the
-[pinned modules](https://github.com/tpscloud/charmedimsure/blob/main/examples/go.mod); `// excerpt` blocks are API
-sketches.
+[pinned modules](https://github.com/tpscloud/charmedimsure/blob/main/examples/go.mod).
 
 If the project's `go.mod` still requires `github.com/charmbracelet/bubbles`
 (pre-v2), the v2 APIs here do not apply.  Use `go doc` against the
@@ -25,9 +24,7 @@ migrate.
 ## Workflow
 
 1. Pick the component from the [index](#components) and read its reference
-   file.  The [table example](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-bubbles/table/main.go)
-   is a complete program with imports, model, `Init`, `Update`, `View`, and
-   the runner.
+   file.  Start from the complete spinner program below.
 2. Construct the bubble in your model constructor, apply its styles (most
    take `isDark`), and store it as a value field.
 3. Start it from your `Init`: batch its `Init()`, `Focus()`, or `Tick`
@@ -51,14 +48,49 @@ key map to render, `key` is a plain data package with no model, and
 `cursor` is driven by the inputs that embed it.  Do not build an interface
 over "all bubbles" that assumes a zero argument `View`.
 
+A complete program with one bubble
+([examples/charmed-bubbles/spinner/main.go](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-bubbles/spinner/main.go));
+list, table, viewport, and the others slot into the same places:
+
 ```go
-// excerpt: the shape shared by list, table, viewport, and the other components
-var cmd tea.Cmd
-m.list, cmd = m.list.Update(msg)      // store it back; bubbles are values
-return m, cmd
+// examples/charmed-bubbles/spinner/main.go
+package main
+
+import (
+    "fmt"
+    "os"
+
+    "charm.land/bubbles/v2/spinner"
+    tea "charm.land/bubbletea/v2"
+)
+
+type model struct {
+    spinner spinner.Model
+}
+
+func (m model) Init() tea.Cmd {
+    return m.spinner.Tick // a method value is a tea.Cmd
+}
+
+func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
+    if msg, ok := msg.(tea.KeyPressMsg); ok && (msg.String() == "q" || msg.String() == "ctrl+c") {
+        return m, tea.Quit
+    }
+    var cmd tea.Cmd
+    m.spinner, cmd = m.spinner.Update(msg) // store it back; bubbles are values
+    return m, cmd
+}
 
 func (m model) View() tea.View {
-    return tea.NewView(m.list.View())
+    return tea.NewView(m.spinner.View() + " working, q to quit\n")
+}
+
+func main() {
+    m := model{spinner: spinner.New(spinner.WithSpinner(spinner.Dot))}
+    if _, err := tea.NewProgram(m).Run(); err != nil {
+        fmt.Fprintln(os.Stderr, err)
+        os.Exit(1)
+    }
 }
 ```
 
@@ -111,7 +143,6 @@ m.help.View(keys)   // "enter submit • esc quit"
 ```
 
 Disable a binding with `SetEnabled(false)` and it drops out of help too.
-The full example is [examples/charmed-bubbletea/compose/main.go](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-bubbletea/compose/main.go).
 
 ## Components
 
