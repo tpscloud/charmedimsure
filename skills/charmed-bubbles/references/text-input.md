@@ -5,7 +5,7 @@ Single line and multi line text editors, and the cursor they embed.  Return to t
 Single line and multi line editors with the same lifecycle: `Focus()`
 returns a `Cmd` (start the cursor blink), `Blur()` stops it, `Value()` reads
 the text, `SetValue` and `Reset` write it
-([examples/charmed-bubbles/textarea/main.go](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-bubbles/textarea/main.go)):
+([examples/charmed-bubbles/textarea/main.go](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-bubbles/textarea/main.go)):
 
 ```go
 // examples/charmed-bubbles/textarea/main.go

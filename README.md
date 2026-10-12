@@ -66,7 +66,7 @@ revision and the accepted exceptions.
 Install with Vercel's <a href="https://skills.sh" target="_blank" rel="noopener noreferrer">skills CLI</a>:
 
 ```sh
-npx skills add tpscloud/charmedimsure-skill
+npx skills add tpscloud/charmedimsure
 ```
 
 > [!NOTE]
@@ -83,13 +83,13 @@ shows the skills without installing.
 ### From a checkout
 
 The skills also load straight from a clone of this repository. Replace
-`/path/to/charmedimsure-skill` with its absolute path.
+`/path/to/charmedimsure` with its absolute path.
 
 Claude Code, as a plugin for one session (skills are then named
 `/charmedimsure:charmed-gum` and so on):
 
 ```sh
-claude --plugin-dir /path/to/charmedimsure-skill
+claude --plugin-dir /path/to/charmedimsure
 ```
 
 Claude Code or Codex, as personal skills that stay installed:
@@ -97,11 +97,11 @@ Claude Code or Codex, as personal skills that stay installed:
 ```sh
 # Claude Code
 mkdir -p "$HOME/.claude/skills"
-ln -s /path/to/charmedimsure-skill/skills/charmed-* "$HOME/.claude/skills/"
+ln -s /path/to/charmedimsure/skills/charmed-* "$HOME/.claude/skills/"
 
 # Codex
 mkdir -p "$HOME/.agents/skills"
-ln -s /path/to/charmedimsure-skill/skills/charmed-* "$HOME/.agents/skills/"
+ln -s /path/to/charmedimsure/skills/charmed-* "$HOME/.agents/skills/"
 ```
 
 Start a new session afterwards. Symlinked skills follow the checkout, so keep

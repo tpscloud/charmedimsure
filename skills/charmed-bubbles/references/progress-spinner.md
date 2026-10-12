@@ -27,7 +27,7 @@ the model, not a package function.
 
 ## progress
 
-Two modes ([examples/charmed-bubbles/progress/main.go](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-bubbles/progress/main.go)).  Animated: call
+Two modes ([examples/charmed-bubbles/progress/main.go](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-bubbles/progress/main.go)).  Animated: call
 `SetPercent(p)` (returns a `Cmd`), and forward `progress.FrameMsg` so the
 spring animation advances.  Static: `ViewAs(p)` draws a bar at a value with
 no state.

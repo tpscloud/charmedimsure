@@ -14,7 +14,7 @@ Import as `"charm.land/glamour/v2"`; styles live in
 `"charm.land/glamour/v2/styles"` and the config types in
 `"charm.land/glamour/v2/ansi"`. Pinned and verified against v2.0.1. Go blocks
 headed `// examples/...` are trimmed from
-[complete programs](https://github.com/tpscloud/charmedimsure-skill/tree/main/examples/charmed-glamour)
+[complete programs](https://github.com/tpscloud/charmedimsure/tree/main/examples/charmed-glamour)
 that build against the pinned modules; `// excerpt` blocks are API sketches.
 
 If the project's `go.mod` still requires `github.com/charmbracelet/glamour`
@@ -41,7 +41,7 @@ migrate.
 ## Rendering
 
 See the complete
-[render example](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-glamour/render/main.go):
+[render example](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-glamour/render/main.go):
 
 ```go
 // examples/charmed-glamour/render/main.go
@@ -90,7 +90,7 @@ buffered `Write` and `Close` API.
 
 A style is an `ansi.StyleConfig`. Start from a built in config and edit, as
 in the
-[custom style example](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-glamour/custom/main.go):
+[custom style example](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-glamour/custom/main.go):
 
 ```go
 // examples/charmed-glamour/custom/main.go
@@ -121,7 +121,7 @@ format.
 
 Render to a string, hand it to a viewport, and re-render when the width or
 the theme changes. The complete
-[viewer example](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-glamour/viewer/main.go)
+[viewer example](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-glamour/viewer/main.go)
 defines `model`, `minWrap`, and the message handlers excerpted below.
 From a repository checkout, run it in a terminal:
 

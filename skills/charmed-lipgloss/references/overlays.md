@@ -3,7 +3,7 @@
 Layers and the compositor draw one block on top of another, so a modal dialog
 can sit over a full screen view without slicing strings by hand.
 
-The [overlay example](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-lipgloss/overlay/main.go)
+The [overlay example](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-lipgloss/overlay/main.go)
 is a complete Bubble Tea program. The fragments below span its `compositor`,
 `View`, and mouse handler: `m.width` and `m.height` come from
 `tea.WindowSizeMsg`; `bg` and `box` are rendered strings,

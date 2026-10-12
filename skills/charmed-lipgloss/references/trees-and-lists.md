@@ -3,7 +3,7 @@
 The `tree` and `list` subpackages of `charm.land/lipgloss/v2` are renderers
 with swappable enumerators and styles.
 
-See the [tree and list example](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-lipgloss/treelist/main.go):
+See the [tree and list example](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-lipgloss/treelist/main.go):
 
 ```go
 // examples/charmed-lipgloss/treelist/main.go

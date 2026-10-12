@@ -97,7 +97,7 @@ clipboard, `Source`, scrolling).
 ## Recording a TUI
 
 This tape records the repository's
-[Lip Gloss overlay example](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-lipgloss/overlay/main.go).
+[Lip Gloss overlay example](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-lipgloss/overlay/main.go).
 Save it as `tui.tape` in a checkout's `examples` directory and run VHS there.
 It builds `./vhs-app` and writes `tui.gif` and `tui.png`; keep those generated
 files out of commits. An isolated skill install does not include the Go example.

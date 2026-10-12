@@ -13,7 +13,7 @@ tables, trees, and lists, measured in terminal cells.
 Import as `"charm.land/lipgloss/v2"`; subpackages are `table`, `tree`, `list`,
 and `compat`. Pinned and verified against v2.0.6. Go blocks headed
 `// examples/...` are trimmed from
-[complete programs](https://github.com/tpscloud/charmedimsure-skill/tree/main/examples/charmed-lipgloss)
+[complete programs](https://github.com/tpscloud/charmedimsure/tree/main/examples/charmed-lipgloss)
 that build against the pinned modules; `// excerpt` blocks are API sketches.
 
 If the project's `go.mod` still requires `github.com/charmbracelet/lipgloss`
@@ -47,7 +47,7 @@ else happens until that string reaches a terminal.
 `Render` always emits full color; downsampling to what the terminal
 supports happens at output.  Inside Bubble Tea v2 that is automatic.
 Standalone, print through Lip Gloss
-(see the [basics example](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-lipgloss/basics/main.go)):
+(see the [basics example](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-lipgloss/basics/main.go)):
 
 ```go
 // examples/charmed-lipgloss/basics/main.go
@@ -85,7 +85,7 @@ fine too.
 Style setters take `color.Color`: `Foreground`, `Background`,
 `BorderForeground`, `BorderBackground`, `UnderlineColor`, `MarginBackground`.
 
-Helpers from the [colors example](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-lipgloss/colors/main.go)
+Helpers from the [colors example](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-lipgloss/colors/main.go)
 (the gradient uses `strings.Builder`).  `lipgloss.Alpha(c, 0.5)` also
 exists and sets a color's alpha on a 0 to 1 scale:
 
@@ -120,7 +120,7 @@ measure with `lipgloss.Width`.
 
 Decide once whether the background is dark, then pick colors with
 `LightDark`.  Standalone, as in the
-[adaptive example](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-lipgloss/adaptive/main.go):
+[adaptive example](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-lipgloss/adaptive/main.go):
 
 ```go
 // examples/charmed-lipgloss/adaptive/main.go
@@ -199,7 +199,7 @@ is `Width(w - GetHorizontalMargins())`, and the text inside it gets
 
 Measure with `lipgloss.Width`, `Height`, or `Size`, which count terminal
 cells and ignore escape codes
-(see the [layout example](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-lipgloss/layout/main.go)):
+(see the [layout example](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-lipgloss/layout/main.go)):
 
 ```go
 // examples/charmed-lipgloss/layout/main.go

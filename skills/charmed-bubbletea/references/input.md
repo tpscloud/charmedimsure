@@ -32,7 +32,7 @@ Pasted text arrives as `tea.PasteMsg` with a `Content` field, bracketed by
 ## Mouse
 
 Set `v.MouseMode` in `View`, then match the concrete message types
-([examples/charmed-bubbletea/mouse/main.go](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-bubbletea/mouse/main.go)):
+([examples/charmed-bubbletea/mouse/main.go](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-bubbletea/mouse/main.go)):
 
 ```go
 // examples/charmed-bubbletea/mouse/main.go

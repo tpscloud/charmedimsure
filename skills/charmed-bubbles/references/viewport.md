@@ -3,7 +3,7 @@
 A scrollable window over a block of text.  Return to the [main skill](../SKILL.md) for the shared component contract and focus rules.
 
 Create it on the first `tea.WindowSizeMsg` and resize it on later ones
-([examples/charmed-bubbles/viewport/main.go](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-bubbles/viewport/main.go)):
+([examples/charmed-bubbles/viewport/main.go](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-bubbles/viewport/main.go)):
 
 ```go
 // examples/charmed-bubbles/viewport/main.go

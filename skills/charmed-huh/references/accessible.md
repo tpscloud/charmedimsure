@@ -14,7 +14,7 @@ screen readers handle.
 terminal whenever the variable is unset.  Honor the common `ACCESSIBLE`
 convention without losing the default by only calling `WithAccessible` when
 the variable is present, as the
-[theme example](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-huh/theme/main.go)
+[theme example](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-huh/theme/main.go)
 does with `os.LookupEnv`.
 
 ## Differences from the TUI

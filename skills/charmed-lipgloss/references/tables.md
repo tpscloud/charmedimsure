@@ -5,7 +5,7 @@ table. For a table the user can scroll and select from, use the Bubbles table
 instead (charmed-bubbles).
 
 `table.New()` builds the table
-(see the [table example](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-lipgloss/table/main.go)):
+(see the [table example](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-lipgloss/table/main.go)):
 
 ```go
 // examples/charmed-lipgloss/table/main.go

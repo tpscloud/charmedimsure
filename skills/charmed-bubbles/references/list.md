@@ -5,7 +5,7 @@ A filterable, paginated list with a status bar, help, and a spinner.  Return to 
 Items are any type with `FilterValue() string`.  The default delegate also
 wants `Title()` and `Description()`.  The list owns filtering (`/`),
 pagination, a status bar, help, and a spinner
-([examples/charmed-bubbles/list/main.go](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-bubbles/list/main.go)):
+([examples/charmed-bubbles/list/main.go](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-bubbles/list/main.go)):
 
 ```go
 // examples/charmed-bubbles/list/main.go

@@ -5,7 +5,7 @@ A parent model that holds Bubbles components, routes keys through
 [main skill](../SKILL.md) for the loop; charmed-bubbles covers each
 component.
 
-[examples/charmed-bubbletea/compose/main.go](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-bubbletea/compose/main.go):
+[examples/charmed-bubbletea/compose/main.go](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-bubbletea/compose/main.go):
 
 ```go
 // examples/charmed-bubbletea/compose/main.go

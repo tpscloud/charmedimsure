@@ -12,9 +12,9 @@ mouse, cursor, and title, with testing and v1 migration covered.
 
 Import as `tea "charm.land/bubbletea/v2"`, pinned to v2.1.0. Go blocks headed
 `// examples/...` are trimmed from
-[complete programs](https://github.com/tpscloud/charmedimsure-skill/tree/main/examples/charmed-bubbletea)
+[complete programs](https://github.com/tpscloud/charmedimsure/tree/main/examples/charmed-bubbletea)
 that build against the
-[pinned modules](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/go.mod);
+[pinned modules](https://github.com/tpscloud/charmedimsure/blob/main/examples/go.mod);
 `// excerpt` blocks are API sketches.
 
 If the project's `go.mod` still requires `github.com/charmbracelet/bubbletea`
@@ -62,7 +62,7 @@ Three rules that follow from this:
 3. `View` is pure.  It reads the model and returns a `tea.View`.  Do not do
    work there.
 
-Minimal program ([examples/charmed-bubbletea/counter/main.go](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-bubbletea/counter/main.go)):
+Minimal program ([examples/charmed-bubbletea/counter/main.go](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-bubbletea/counter/main.go)):
 
 ```go
 // examples/charmed-bubbletea/counter/main.go
@@ -161,7 +161,7 @@ A `Cmd` is `func() tea.Msg`.  Write a function that does the work and returns
 a message, then return that function (not its result) from `Init` or
 `Update`.
 
-[examples/charmed-bubbletea/asyncfetch/main.go](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-bubbletea/asyncfetch/main.go):
+[examples/charmed-bubbletea/asyncfetch/main.go](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-bubbletea/asyncfetch/main.go):
 
 ```go
 // examples/charmed-bubbletea/asyncfetch/main.go

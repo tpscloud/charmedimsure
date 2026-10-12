@@ -12,7 +12,7 @@ from inside Bubble Tea.
 
 Import as `"charm.land/log/v2"`. Pinned and verified against v2.0.1. Go blocks
 headed `// examples/...` are trimmed from
-[complete programs](https://github.com/tpscloud/charmedimsure-skill/tree/main/examples/charmed-log)
+[complete programs](https://github.com/tpscloud/charmedimsure/tree/main/examples/charmed-log)
 that build against the pinned modules; `// excerpt` blocks are API sketches.
 
 If the project's `go.mod` still requires `github.com/charmbracelet/log`
@@ -38,7 +38,7 @@ migrate.
 ## Basics
 
 The package level logger writes to stderr at info level with timestamps
-(see the [basic example](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-log/basic/main.go)):
+(see the [basic example](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-log/basic/main.go)):
 
 ```go
 // examples/charmed-log/basic/main.go
@@ -77,7 +77,7 @@ levels, caller and time options, context helpers, and every `Styles` field.
 
 ## Formatters
 
-The [structured example](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-log/structured/main.go)
+The [structured example](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-log/structured/main.go)
 includes formatters and custom styles. Run it from a repository checkout:
 
 ```sh
@@ -128,7 +128,7 @@ styled.SetStyles(styles)
 
 A `*log.Logger` is a `slog.Handler`, so libraries that log through
 `log/slog` can be pointed at it.  It also produces a standard `*log.Logger`
-for APIs that demand one (see the [adapter example](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-log/slog/main.go)):
+for APIs that demand one (see the [adapter example](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-log/slog/main.go)):
 
 ```go
 // examples/charmed-log/slog/main.go
@@ -155,7 +155,7 @@ while the program runs.  Any other writer works (a file, an in memory
 buffer the app shows in a pane, a remote sink); a file is the usual choice
 because you can tail it.  Bubble Tea's `LogToFileWith` accepts the Charm
 logger because it implements `SetOutput` and `SetPrefix`
-(see the complete [Bubble Tea example](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-log/tea/main.go)):
+(see the complete [Bubble Tea example](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-log/tea/main.go)):
 
 ```go
 // examples/charmed-log/tea/main.go

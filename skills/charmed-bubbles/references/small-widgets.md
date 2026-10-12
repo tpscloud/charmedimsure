@@ -5,7 +5,7 @@ Small helpers for paging a slice and counting time.  Return to the [main skill](
 ## paginator
 
 paginator computes bounds; you slice
-([examples/charmed-bubbles/paginator/main.go](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-bubbles/paginator/main.go)):
+([examples/charmed-bubbles/paginator/main.go](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-bubbles/paginator/main.go)):
 
 ```go
 // examples/charmed-bubbles/paginator/main.go
@@ -22,7 +22,7 @@ for _, it := range m.items[start:end] {
 
 timer counts down and emits `timer.TimeoutMsg`; stopwatch counts up.  Both
 start from `Init()`, and `Start`, `Stop`, `Toggle` return commands
-([examples/charmed-bubbles/timer/main.go](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-bubbles/timer/main.go)):
+([examples/charmed-bubbles/timer/main.go](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-bubbles/timer/main.go)):
 
 ```go
 // examples/charmed-bubbles/timer/main.go

@@ -8,7 +8,7 @@ These examples use Bubble Tea v2.1.0. Return to the
 `View` and `Update` are plain methods, so unit tests construct messages and
 call them.  For end to end runs, give the program an `io.Reader` of
 keystrokes, a buffer for output, and a fixed size
-([examples/charmed-bubbletea/testing/main_test.go](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-bubbletea/testing/main_test.go)):
+([examples/charmed-bubbletea/testing/main_test.go](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-bubbletea/testing/main_test.go)):
 
 ```go
 // examples/charmed-bubbletea/testing/main_test.go

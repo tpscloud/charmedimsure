@@ -13,8 +13,8 @@ timers, each wired through the same Init, Update, and View contract.
 Import each component from its own package (`"charm.land/bubbles/v2/list"`,
 `.../table`, `.../viewport`, and so on), pinned to v2.2.1. Go blocks headed
 `// examples/...` are trimmed from
-[complete programs](https://github.com/tpscloud/charmedimsure-skill/tree/main/examples) that build against the
-[pinned modules](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/go.mod); `// excerpt` blocks are API
+[complete programs](https://github.com/tpscloud/charmedimsure/tree/main/examples) that build against the
+[pinned modules](https://github.com/tpscloud/charmedimsure/blob/main/examples/go.mod); `// excerpt` blocks are API
 sketches.
 
 If the project's `go.mod` still requires `github.com/charmbracelet/bubbles`
@@ -25,7 +25,7 @@ migrate.
 ## Workflow
 
 1. Pick the component from the [index](#components) and read its reference
-   file.  The [table example](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-bubbles/table/main.go)
+   file.  The [table example](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-bubbles/table/main.go)
    is a complete program with imports, model, `Init`, `Update`, `View`, and
    the runner.
 2. Construct the bubble in your model constructor, apply its styles (most
@@ -111,7 +111,7 @@ m.help.View(keys)   // "enter submit • esc quit"
 ```
 
 Disable a binding with `SetEnabled(false)` and it drops out of help too.
-The full example is [examples/charmed-bubbletea/compose/main.go](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-bubbletea/compose/main.go).
+The full example is [examples/charmed-bubbletea/compose/main.go](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-bubbletea/compose/main.go).
 
 ## Components
 

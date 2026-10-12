@@ -7,7 +7,7 @@ built on commands.  Return to the [main skill](../SKILL.md) for the loop and
 ## Timers
 
 `tea.Tick` and `tea.Every` each send one message.  To keep ticking, return
-another tick from the handler ([examples/charmed-bubbletea/ticker/main.go](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-bubbletea/ticker/main.go)):
+another tick from the handler ([examples/charmed-bubbletea/ticker/main.go](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-bubbletea/ticker/main.go)):
 
 ```go
 // examples/charmed-bubbletea/ticker/main.go
@@ -41,7 +41,7 @@ clock, so a one second `Every` fires on the second boundary.
 
 ## Feeding the program from outside
 
-Two patterns ([examples/charmed-bubbletea/subscribe/main.go](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-bubbletea/subscribe/main.go)).  A channel read
+Two patterns ([examples/charmed-bubbletea/subscribe/main.go](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-bubbletea/subscribe/main.go)).  A channel read
 inside a `Cmd`, re-armed after every message:
 
 ```go
@@ -69,7 +69,7 @@ and blocks until the program has started.
 ## Running another program
 
 `tea.ExecProcess` releases the terminal, runs an `*exec.Cmd`, and resumes
-([examples/charmed-bubbletea/editor/main.go](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-bubbletea/editor/main.go)):
+([examples/charmed-bubbletea/editor/main.go](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-bubbletea/editor/main.go)):
 
 ```go
 // examples/charmed-bubbletea/editor/main.go

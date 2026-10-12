@@ -18,7 +18,7 @@ on exit, so report done or error before quitting).
 
 `tea.WindowSizeMsg` arrives once at start and again on every resize.  Store
 `Width` and `Height` and use them in `View`
-([examples/charmed-bubbletea/fullscreen/main.go](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-bubbletea/fullscreen/main.go)):
+([examples/charmed-bubbletea/fullscreen/main.go](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-bubbletea/fullscreen/main.go)):
 
 ```go
 // examples/charmed-bubbletea/fullscreen/main.go
@@ -39,7 +39,7 @@ func (m model) View() tea.View {
 
 Bubble Tea downsamples colors to the terminal's profile on output, so styles
 may use true color.  What it cannot guess is whether the background is light
-or dark; ask for it ([examples/charmed-bubbletea/adaptive/main.go](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-bubbletea/adaptive/main.go)):
+or dark; ask for it ([examples/charmed-bubbletea/adaptive/main.go](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-bubbletea/adaptive/main.go)):
 
 ```go
 // examples/charmed-bubbletea/adaptive/main.go

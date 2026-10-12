@@ -12,7 +12,7 @@ dynamic options, themes, accessible mode, and forms embedded in Bubble Tea.
 Import as `"charm.land/huh/v2"`; the spinner is `"charm.land/huh/v2/spinner"`.
 Pinned and verified against v2.0.3. Go blocks headed `// examples/...` are
 trimmed from
-[complete programs](https://github.com/tpscloud/charmedimsure-skill/tree/main/examples/charmed-huh)
+[complete programs](https://github.com/tpscloud/charmedimsure/tree/main/examples/charmed-huh)
 that build against the pinned modules; `// excerpt` blocks are API sketches.
 
 If the project's `go.mod` still requires `github.com/charmbracelet/huh`
@@ -42,7 +42,7 @@ through fields with enter or tab (shift+tab back), and the form advances to
 the next group when every field on the page validates.  Answers land in
 variables you bind with `Value(&v)`.
 
-The [standalone example](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-huh/standalone/main.go)
+The [standalone example](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-huh/standalone/main.go)
 collects and prints a local task plan. From a repository checkout, run it in
 a terminal with `cd examples && go run ./charmed-huh/standalone`.
 
@@ -138,7 +138,7 @@ failing field blocks the page.
 
 `NewGroup(fields...)` with `Title`, `Description`, `WithHide(bool)`, and
 `WithHideFunc(func() bool)` to skip a page based on earlier answers
-(see the [dynamic example](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-huh/dynamic/main.go)):
+(see the [dynamic example](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-huh/dynamic/main.go)):
 
 ```go
 // examples/charmed-huh/dynamic/main.go
@@ -230,7 +230,7 @@ path skips (timeouts, context, hidden groups, validation on EOF).
 ## Spinner
 
 For work that follows the form, see the
-[spinner example](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-huh/spinner/main.go).
+[spinner example](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-huh/spinner/main.go).
 Its `simulateWork` waits for a timer or cancellation; it performs no file or
 network operations:
 

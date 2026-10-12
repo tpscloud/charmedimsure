@@ -9,7 +9,7 @@ custom and built in functions with `huh.ThemeFunc`, for example
 `form.WithTheme(huh.ThemeFunc(huh.ThemeDracula))`. Built in functions include
 `ThemeCharm`, `ThemeDracula`, `ThemeCatppuccin`, `ThemeBase16`, and
 `ThemeBase`. See the complete
-[theme example](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-huh/theme/main.go):
+[theme example](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-huh/theme/main.go):
 
 ```go
 // examples/charmed-huh/theme/main.go

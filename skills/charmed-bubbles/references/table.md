@@ -3,7 +3,7 @@
 A scrolling, selectable grid.  Return to the [main skill](../SKILL.md) for the shared component contract and focus rules.
 
 For a static rendering use `lipgloss/table` instead.  The complete program is
-[examples/charmed-bubbles/table/main.go](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-bubbles/table/main.go):
+[examples/charmed-bubbles/table/main.go](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-bubbles/table/main.go):
 
 ```go
 // examples/charmed-bubbles/table/main.go

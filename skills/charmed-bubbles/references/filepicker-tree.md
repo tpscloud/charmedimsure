@@ -4,7 +4,7 @@ Browsers for a directory on disk and for an in memory tree of nodes.  Return to 
 
 ## filepicker
 
-A directory browser ([examples/charmed-bubbles/filepicker/main.go](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-bubbles/filepicker/main.go)):
+A directory browser ([examples/charmed-bubbles/filepicker/main.go](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-bubbles/filepicker/main.go)):
 
 ```go
 // examples/charmed-bubbles/filepicker/main.go
@@ -31,7 +31,7 @@ is the row under the cursor; `Path` is the selection.
 
 ## tree
 
-An interactive tree ([examples/charmed-bubbles/tree/main.go](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-bubbles/tree/main.go)):
+An interactive tree ([examples/charmed-bubbles/tree/main.go](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-bubbles/tree/main.go)):
 
 ```go
 // examples/charmed-bubbles/tree/main.go

@@ -14,7 +14,7 @@ Charm publishes Go libraries for terminal programs and a set of CLIs built on
 them. The core v2 UI libraries import from `charm.land`; supporting libraries
 can still use GitHub module paths. This skill routes to the per-library
 charmed-* skills and their
-[examples](https://github.com/tpscloud/charmedimsure-skill/tree/main/examples),
+[examples](https://github.com/tpscloud/charmedimsure/tree/main/examples),
 which build against the pinned modules.
 
 ## Workflow
@@ -35,18 +35,18 @@ which build against the pinned modules.
 
 | Library | Import | Pinned here | Skill |
 |---------|--------|-------------|-------|
-| [Bubble Tea](https://github.com/charmbracelet/bubbletea) | `charm.land/bubbletea/v2` (alias `tea`) | v2.1.0 | [charmed-bubbletea](https://github.com/tpscloud/charmedimsure-skill/blob/main/skills/charmed-bubbletea/SKILL.md) |
-| [Bubbles](https://github.com/charmbracelet/bubbles) | `charm.land/bubbles/v2/<component>` | v2.2.1 | [charmed-bubbles](https://github.com/tpscloud/charmedimsure-skill/blob/main/skills/charmed-bubbles/SKILL.md) |
-| [Lip Gloss](https://github.com/charmbracelet/lipgloss) | `charm.land/lipgloss/v2` (+ `/table`, `/tree`, `/list`, `/compat`) | v2.0.6 | [charmed-lipgloss](https://github.com/tpscloud/charmedimsure-skill/blob/main/skills/charmed-lipgloss/SKILL.md) |
-| [Huh](https://github.com/charmbracelet/huh) | `charm.land/huh/v2` (+ `/spinner`) | v2.0.3 | [charmed-huh](https://github.com/tpscloud/charmedimsure-skill/blob/main/skills/charmed-huh/SKILL.md) |
-| [Glamour](https://github.com/charmbracelet/glamour) | `charm.land/glamour/v2` (+ `/ansi`, `/styles`) | v2.0.1 | [charmed-glamour](https://github.com/tpscloud/charmedimsure-skill/blob/main/skills/charmed-glamour/SKILL.md) |
-| [Log](https://github.com/charmbracelet/log) | `charm.land/log/v2` | v2.0.1 | [charmed-log](https://github.com/tpscloud/charmedimsure-skill/blob/main/skills/charmed-log/SKILL.md) |
+| [Bubble Tea](https://github.com/charmbracelet/bubbletea) | `charm.land/bubbletea/v2` (alias `tea`) | v2.1.0 | [charmed-bubbletea](https://github.com/tpscloud/charmedimsure/blob/main/skills/charmed-bubbletea/SKILL.md) |
+| [Bubbles](https://github.com/charmbracelet/bubbles) | `charm.land/bubbles/v2/<component>` | v2.2.1 | [charmed-bubbles](https://github.com/tpscloud/charmedimsure/blob/main/skills/charmed-bubbles/SKILL.md) |
+| [Lip Gloss](https://github.com/charmbracelet/lipgloss) | `charm.land/lipgloss/v2` (+ `/table`, `/tree`, `/list`, `/compat`) | v2.0.6 | [charmed-lipgloss](https://github.com/tpscloud/charmedimsure/blob/main/skills/charmed-lipgloss/SKILL.md) |
+| [Huh](https://github.com/charmbracelet/huh) | `charm.land/huh/v2` (+ `/spinner`) | v2.0.3 | [charmed-huh](https://github.com/tpscloud/charmedimsure/blob/main/skills/charmed-huh/SKILL.md) |
+| [Glamour](https://github.com/charmbracelet/glamour) | `charm.land/glamour/v2` (+ `/ansi`, `/styles`) | v2.0.1 | [charmed-glamour](https://github.com/tpscloud/charmedimsure/blob/main/skills/charmed-glamour/SKILL.md) |
+| [Log](https://github.com/charmbracelet/log) | `charm.land/log/v2` | v2.0.1 | [charmed-log](https://github.com/tpscloud/charmedimsure/blob/main/skills/charmed-log/SKILL.md) |
 | [colorprofile](https://github.com/charmbracelet/colorprofile) | `github.com/charmbracelet/colorprofile` | v0.4.3 | used by the above |
 | [Harmonica](https://github.com/charmbracelet/harmonica) | `github.com/charmbracelet/harmonica` | v0.2.0 | spring animation, used by progress |
 | [Wish](https://github.com/charmbracelet/wish) | `charm.land/wish/v2` | Not pinned | SSH apps (not covered here) |
 
 The versions above, except Wish, are pinned in the
-[example module](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/go.mod).
+[example module](https://github.com/tpscloud/charmedimsure/blob/main/examples/go.mod).
 Wish is listed for orientation only. It is not a dependency of the example
 module, and this repository has no SSH example.
 
@@ -71,15 +71,15 @@ go get charm.land/bubbletea/v2@v2.1.0 charm.land/bubbles/v2@v2.2.1 \
 **A full interactive program (panes, navigation, live data).**  Bubble
 Tea for the loop, Bubbles for the widgets, Lip Gloss for layout and
 color. Start from the
-[compose](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-bubbletea/compose/main.go)
-or [fullscreen](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-bubbletea/fullscreen/main.go)
+[compose](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-bubbletea/compose/main.go)
+or [fullscreen](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-bubbletea/fullscreen/main.go)
 example in charmed-bubbletea.
 
 **A CLI that asks a few questions then does work.**  Huh alone.  Run the
 form, then a Huh spinner around the work.  No Bubble Tea code needed.
 
 **Questions inside a larger TUI.**  Huh embedded as a bubble; see the
-[embedded example](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-huh/embedded/main.go)
+[embedded example](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-huh/embedded/main.go)
 in charmed-huh.
 
 **Pretty output from a non interactive command.**  Lip Gloss only:
@@ -134,18 +134,18 @@ before printing anything.
   Build it in the `BackgroundColorMsg` handler.
 - **Markdown help screen.** Glamour renders at the available width, and a
   Bubbles viewport scrolls it. The
-  [viewer example](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-glamour/viewer/main.go)
+  [viewer example](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-glamour/viewer/main.go)
   subtracts layout space from `WindowSizeMsg.Width` and clamps the result.
 - **Modal dialog.** Lip Gloss layers and compositor over the main view;
   hit test clicks with `Compositor.Hit` (the
-  [overlay example](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-lipgloss/overlay/main.go)).
+  [overlay example](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-lipgloss/overlay/main.go)).
 - **Long running work with progress.** A `Cmd` that reads from a channel
   the worker writes to; each message updates a Bubbles progress model
-  (combine the [subscription pattern](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-bubbletea/subscribe/main.go)
-  with the [progress example](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-bubbles/progress/main.go)).
+  (combine the [subscription pattern](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-bubbletea/subscribe/main.go)
+  with the [progress example](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-bubbles/progress/main.go)).
 - **Debug logging in a TUI.** `tea.LogToFileWith("debug.log", "app",
   log.Default())`, then tail the file. See the
-  [logging example](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-log/tea/main.go).
+  [logging example](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-log/tea/main.go).
 - **Tests.** Drive `Update` with constructed messages; run the whole
   program with `tea.WithInput`, `tea.WithOutput`, `tea.WithWindowSize`,
   and `tea.WithColorProfile(colorprofile.Ascii)` for stable strings.
@@ -181,8 +181,8 @@ the pinned upstream upgrade guides, and the test loop to run after each step.
 
 ## Where to look when a skill here is not enough
 
-- The [sibling skills](https://github.com/tpscloud/charmedimsure-skill/tree/main/skills)
-  and [examples](https://github.com/tpscloud/charmedimsure-skill/tree/main/examples)
+- The [sibling skills](https://github.com/tpscloud/charmedimsure/tree/main/skills)
+  and [examples](https://github.com/tpscloud/charmedimsure/tree/main/examples)
   live in the repository; an isolated skill install does not include them.
   To run a linked example from a checkout, enter the
   `examples` directory and run `go run ./charmed-bubbletea/compose` (or the

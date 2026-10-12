@@ -3,7 +3,7 @@
 Details for running a `*huh.Form` as a component inside a Bubble Tea v2
 program instead of calling `Run`. SKILL.md has the core `Update` and `View`
 code; the complete
-[embedded example](https://github.com/tpscloud/charmedimsure-skill/blob/main/examples/charmed-huh/embedded/main.go)
+[embedded example](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-huh/embedded/main.go)
 has the model, frame styles, and minimum width.
 
 ## Reading the result

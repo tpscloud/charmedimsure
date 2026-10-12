@@ -1,4 +1,4 @@
-module github.com/tpscloud/charmedimsure-skill/examples
+module github.com/tpscloud/charmedimsure/examples
 
 go 1.26.5
 
