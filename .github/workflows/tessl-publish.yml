@@ -28,6 +28,8 @@ jobs:
         with:
           version: "0.114.0"
           token: ${{ secrets.TESSL_TOKEN }}
+      - name: Check the Tessl credentials
+        run: tessl whoami
       - name: Lint the plugin manifest
         run: tessl plugin lint .
       - name: Publish tpscloud/charmedimsure
