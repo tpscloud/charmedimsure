@@ -1,0 +1,36 @@
+{
+  "context": "Release-notes prompt with gum",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "uses_gum_write",
+      "description": "Collects the notes with `gum write`.",
+      "max_score": 1,
+      "category": "INTENT"
+    },
+    {
+      "name": "correct_keys",
+      "description": "Tells the user that Enter submits and Ctrl+J inserts a new line (Esc cancels), not that Esc or Ctrl+D submits.",
+      "max_score": 4,
+      "category": "EDGE_CASE"
+    },
+    {
+      "name": "checks_write_status",
+      "description": "Checks `gum write`'s exit status (for example `|| exit 1`) before using the captured text.",
+      "max_score": 2,
+      "category": "EDGE_CASE"
+    },
+    {
+      "name": "confirm_gates_write",
+      "description": "Writes the file only when `gum confirm` succeeds.",
+      "max_score": 2,
+      "category": "INTENT"
+    },
+    {
+      "name": "quotes_variables",
+      "description": "Quotes the captured notes when writing them.",
+      "max_score": 1,
+      "category": "DESIGN"
+    }
+  ]
+}

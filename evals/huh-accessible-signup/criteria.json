@@ -1,0 +1,36 @@
+{
+  "context": "Sign-up form that also works for screen readers",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "v2_import",
+      "description": "Imports `charm.land/huh/v2`.",
+      "max_score": 1,
+      "category": "INTENT"
+    },
+    {
+      "name": "accessible_from_env",
+      "description": "Calls `WithAccessible` based on the `ACCESSIBLE` variable without turning off the `TERM=dumb` default (for example only when `os.LookupEnv` finds it).",
+      "max_score": 2,
+      "category": "DESIGN"
+    },
+    {
+      "name": "handles_user_aborted",
+      "description": "Checks `errors.Is(err, huh.ErrUserAborted)` for cancellation in the TUI.",
+      "max_score": 2,
+      "category": "INTENT"
+    },
+    {
+      "name": "validates_after_run",
+      "description": "Re-checks the bound values after `Run` (for example an empty name), because accessible mode can return nil with default values and never returns `ErrUserAborted`.",
+      "max_score": 4,
+      "category": "EDGE_CASE"
+    },
+    {
+      "name": "typed_select",
+      "description": "Uses `huh.NewSelect[string]()` with options for the region.",
+      "max_score": 1,
+      "category": "DESIGN"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "context": "Pick the Charm stack for a new tool",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "right_libraries",
+      "description": "Recommends Huh for the questionnaire, Bubble Tea plus Bubbles (table, viewport) for the dashboard, Lip Gloss for styling, and Log for logging.",
+      "max_score": 2,
+      "category": "INTENT"
+    },
+    {
+      "name": "charm_land_paths",
+      "description": "Uses the v2 `charm.land/<name>/v2` module paths (bubbletea, bubbles, lipgloss, huh, log), not `github.com/charmbracelet/<name>`.",
+      "max_score": 4,
+      "category": "EDGE_CASE"
+    },
+    {
+      "name": "no_mixed_majors",
+      "description": "Does not mix v1 and v2 modules of the same library.",
+      "max_score": 2,
+      "category": "MUST_NOT"
+    },
+    {
+      "name": "explains_fit",
+      "description": "Explains briefly how the pieces hand data to each other (for example a Huh form embedded in Bubble Tea, Lip Gloss styles in views).",
+      "max_score": 1,
+      "category": "DESIGN"
+    }
+  ]
+}

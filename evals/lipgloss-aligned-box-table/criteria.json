@@ -1,0 +1,36 @@
+{
+  "context": "Bordered summary box with Lip Gloss v2",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "v2_import",
+      "description": "Imports `charm.land/lipgloss/v2`.",
+      "max_score": 1,
+      "category": "INTENT"
+    },
+    {
+      "name": "measures_cells",
+      "description": "Measures text with `lipgloss.Width` (or `ansi.StringWidth`), not `len`, so the CJK row aligns.",
+      "max_score": 3,
+      "category": "EDGE_CASE"
+    },
+    {
+      "name": "width_includes_frame",
+      "description": "Sets `Width(40)` knowing that in v2 width includes padding and border, rather than subtracting the frame from 40.",
+      "max_score": 3,
+      "category": "DESIGN"
+    },
+    {
+      "name": "adaptive_colors",
+      "description": "Detects the background (for example `lipgloss.HasDarkBackground(os.Stdin, os.Stdout)`) and picks colors with `lipgloss.LightDark` or equivalent; does not use v1 `AdaptiveColor`.",
+      "max_score": 2,
+      "category": "DESIGN"
+    },
+    {
+      "name": "prints_with_lipgloss",
+      "description": "Prints with `lipgloss.Println` (or `lipgloss.Fprint*`) so colors downsample.",
+      "max_score": 1,
+      "category": "DESIGN"
+    }
+  ]
+}

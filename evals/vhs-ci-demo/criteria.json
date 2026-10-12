@@ -1,0 +1,36 @@
+{
+  "context": "Demo GIF in CI with vhs",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "settings_first",
+      "description": "Puts every `Set` before the first command other than `Set`, `Output`, or `Require` (`Hide` counts).",
+      "max_score": 2,
+      "category": "DESIGN"
+    },
+    {
+      "name": "output_and_require",
+      "description": "Declares `Output demo.gif` and `Require` for programs it needs.",
+      "max_score": 1,
+      "category": "INTENT"
+    },
+    {
+      "name": "pinned_version",
+      "description": "Pins the vhs version in CI (for example `version:` on `charmbracelet/vhs-action`) instead of the default `latest`, and pins the action by tag or SHA.",
+      "max_score": 3,
+      "category": "EDGE_CASE"
+    },
+    {
+      "name": "no_publish",
+      "description": "Does not pass `-p`/`--publish` or set `VHS_PUBLISH=true`, and ideally notes that `VHS_PUBLISH` uploads to vhs.charm.sh.",
+      "max_score": 3,
+      "category": "MUST_NOT"
+    },
+    {
+      "name": "uploads_artifact",
+      "description": "Uploads the GIF with `actions/upload-artifact`.",
+      "max_score": 1,
+      "category": "INTEGRATION"
+    }
+  ]
+}
