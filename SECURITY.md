@@ -45,3 +45,10 @@ License text and links are unchanged; the exceptions only change how the
 results are shown.
 
 These checks cover their stated tools and scope, not every possible behavior.
+
+## Independent reports
+
+- [Tessl registry](https://tessl.io/registry/tpscloud/charmedimsure): quality
+  and eval results for the published plugin.
+- [Tessl security report](https://tessl.io/registry/tpscloud/charmedimsure/security):
+  the registry's security scan, including Snyk's results.
