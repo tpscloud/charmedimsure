@@ -9,9 +9,10 @@ public issue.
 ## Independent reports
 
 Vercel's [skills.sh](https://skills.sh) runs three security audits on each
-published skill, and [Tessl.io](https://tessl.io) reviews each skill's quality. All nine skills passed every audit and scored
-100/100 on 2026-10-12. Each result links to that skill's live report; the
-README badges link to the same pages.
+published skill, and [Tessl.io](https://tessl.io) reviews each skill's
+quality. All nine skills passed every audit and scored 100/100 on 2026-10-12.
+Each result links to that skill's live report; the README badges link to the
+same pages.
 
 | Skill | Gen Agent Trust Hub | Socket | Snyk | Tessl quality |
 |---|---|---|---|---|
