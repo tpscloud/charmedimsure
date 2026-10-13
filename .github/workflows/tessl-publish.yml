@@ -43,11 +43,18 @@ jobs:
         id: version
         run: |
           version="$(jq -r .version .tessl-plugin/plugin.json)"
-          if tessl plugin info "tpscloud/charmedimsure@${version}" >/dev/null 2>&1; then
+          # info exits 1 for a missing version and for network or registry
+          # errors alike, so publish only on the two not-found messages of
+          # the pinned CLI. Anything else fails here instead of starting a
+          # paid publish of a version that may already exist.
+          if out="$(tessl plugin info "tpscloud/charmedimsure@${version}" 2>&1)"; then
             echo "Version ${version} is already published; bump it to publish." >> "$GITHUB_STEP_SUMMARY"
             echo "publish=false" >> "$GITHUB_OUTPUT"
-          else
+          elif grep -qE 'has no version "|Could not find plugin "' <<<"$out"; then
             echo "publish=true" >> "$GITHUB_OUTPUT"
+          else
+            printf 'Could not tell whether %s is published:\n%s\n' "$version" "$out" >&2
+            exit 1
           fi
       - name: Publish tpscloud/charmedimsure
         if: steps.version.outputs.publish == 'true'
