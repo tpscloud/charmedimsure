@@ -101,6 +101,45 @@ Publishing runs every eval scenario, which costs Tessl credits, so bump the
 version (and the one in `.claude-plugin/plugin.json`) only for a release.
 Documentation changes never publish.
 
+## Eval scenarios
+
+`evals/<name>/task.md` is the brief the agent sees; `criteria.json` is the
+rubric a judge scores. When Tessl publishes, it runs every scenario twice,
+without the plugin and with it, on a tool equipped agent with network access
+and a long turn budget, and shows the ratio of the two scores on the registry
+as uplift. A scenario the baseline already solves adds nothing to that
+number, so a scenario earns its place by being one the baseline fails.
+
+1. The trap is a natural wrong default, not an instruction. The task reads
+   like an ordinary request; the obvious implementation is wrong in a way the
+   skill documents and the module source confirms. Never name the rule or
+   the API in the task.
+2. The baseline cannot fix the mistake by compiling. The eval sandbox has no
+   terminal, so prefer behavior that only shows at runtime on a tty: which
+   stream the UI draws on, keys while a widget is filtering, color profiles
+   per writer, message order, waits in a tape, CLI keys and exit codes. Wrong
+   import paths and v1 calls fail to compile, and the baseline fixes those
+   on its own.
+3. Weight follows difficulty. A free point such as `v2_import` gets 1; the
+   trap gets 3 or 4; a `MUST_NOT` names the wrong default so partial credit
+   cannot hide it.
+4. Every criterion is a mistake a user would ship, verified against the
+   pinned module, and the skill text (or a reference it links) teaches the
+   fix. A criterion that rewards the skill's phrasing when another idiom is
+   equally correct is gaming, not evaluation.
+5. Before a release, run `tessl eval run . -n 2` and read the per scenario
+   baseline scores. Rewrite or drop any scenario the baseline scores above
+   about 80 percent on; it measures common knowledge. Unchanged scenarios
+   reuse cached solutions, so an edit costs credits only for the scenarios it
+   touches.
+6. Run `tessl eval lint evals` before committing. `--with-scenario-quality-check`
+   on publish filters scenarios Tessl's judge finds leaky or low value; it
+   does not remove scenarios the baseline passes.
+
+The evidence behind these rules (run data, a comparison with other skill
+repositories' evaluation reports) lives in the private `charmedmeta`
+repository under `evals/`.
+
 ## Commits
 
 One skill per commit.  Subject line names the skill and what changed, for
