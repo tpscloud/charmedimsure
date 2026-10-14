@@ -152,7 +152,11 @@ standard library `log` package.  Do that in `main`, not in a library.
 The renderer owns the terminal, so logs must not go to stdout or stderr
 while the program runs.  Any other writer works (a file, an in memory
 buffer the app shows in a pane, a remote sink); a file is the usual choice
-because you can tail it.  Bubble Tea's `LogToFileWith` accepts the Charm
+because you can tail it.  A logger built on a buffer or a pipe detects no
+terminal and writes plain text; for a pane the program draws itself, call
+`SetColorProfile(colorprofile.TrueColor)` on that logger so the lines carry
+color, and let the Bubble Tea renderer downsample them for the terminal.
+Bubble Tea's `LogToFileWith` accepts the Charm
 logger because it implements `SetOutput` and `SetPrefix`
 (see the complete [Bubble Tea example](https://github.com/tpscloud/charmedimsure/blob/main/examples/charmed-log/tea/main.go)):
 
