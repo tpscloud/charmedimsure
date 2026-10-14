@@ -127,11 +127,19 @@ number, so a scenario earns its place by being one the baseline fails.
    pinned module, and the skill text (or a reference it links) teaches the
    fix. A criterion that rewards the skill's phrasing when another idiom is
    equally correct is gaming, not evaluation.
-5. Before a release, run `tessl eval run . -n 2` and read the per scenario
-   baseline scores. Rewrite or drop any scenario the baseline scores above
-   about 80 percent on; it measures common knowledge. Unchanged scenarios
-   reuse cached solutions, so an edit costs credits only for the scenarios it
-   touches.
+5. Before a release, run the changed scenarios and read the judge's
+   reasoning for both variants, not only the scores. Copy the changed
+   scenario directories into an untracked folder and run
+   `tessl eval run <folder> --context .` so the unchanged ones are not
+   charged; a full pass of nine costs about 550 credits, a subset of three
+   about 300. Expect the default baseline (a tool equipped agent with a
+   long budget) to score near 100 percent on anything the module source
+   confirms; the measured uplift for these skills sits near 1.0x and the
+   gain shows as cost, tokens, and turns per solve on the run page. A
+   scenario stays when it catches a with-plugin regression or a gap in the
+   skill (the bubbles filter ordering was found this way); a criterion
+   both variants fail identically is either a skill gap to fix or a rubric
+   mistake to remove.
 6. Run `tessl eval lint evals` before committing. `--with-scenario-quality-check`
    on publish filters scenarios Tessl's judge finds leaky or low value; it
    does not remove scenarios the baseline passes.
