@@ -53,7 +53,7 @@ Errors from `Run`: `ErrInterrupted`, `ErrProgramKilled`, `ErrProgramPanic`.
 |--------|---------|
 | `WithContext(ctx)` | cancel the program from a context |
 | `WithInput(io.Reader)` | custom input; tests.  `WithInput(nil)` disables input and also skips every terminal query (background color, cursor position, clipboard, version, capability probe), so their reply messages never arrive |
-| `WithOutput(io.Writer)` | custom output; tests |
+| `WithOutput(io.Writer)` | custom output; tests, or `os.Stderr` when stdout must carry only results |
 | `WithWindowSize(w, h)` | fixed initial size; tests |
 | `WithColorProfile(colorprofile.Profile)` | force a profile; tests |
 | `WithEnvironment([]string)` | env for remote sessions (SSH) |

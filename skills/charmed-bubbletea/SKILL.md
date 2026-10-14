@@ -243,6 +243,9 @@ lists them.
 - Ignoring `WindowSizeMsg` and then wondering why layout is wrong at start.
 - Printing with `fmt` while running.  Use `tea.Println` (outside alt screen)
   or `tea.LogToFile`.
+- Printing a result to stdout from a program that also draws on stdout.  A
+  script's `$(...)` captures the frames along with the answer.  Pass
+  `tea.WithOutput(os.Stderr)` and print the result after `Run` returns.
 - Expecting ctrl+c to kill the process.  The terminal is in raw mode; you
   must handle it and return `tea.Quit` or `tea.Interrupt`.
 - Matching `" "` for space, or `tea.KeyMsg` as a struct.  Both are v1.
