@@ -182,7 +182,10 @@ check the pinned version's `DefaultKeyMap` after a bump.
 - Creating a list or viewport with a zero size and never calling `SetSize`
   from `WindowSizeMsg`.  It renders empty.
 - Handling enter yourself while the list is filtering.  Check
-  `SettingFilter()` first.
+  `SettingFilter()` before you forward the key press.  Once `list.Update`
+  has seen the enter, the filter is applied and `SettingFilter()` is already
+  false, so a check placed after the forward fires on the same key press and
+  selects an item the user only meant to filter.
 - Intercepting a key the bubble already uses (enter toggles tree nodes,
   space pages the table) and then wondering why the bubble stopped
   responding.
