@@ -28,7 +28,7 @@
     },
     {
       "name": "settings_first_timeout",
-      "description": "Puts every `Set` (including a `Set WaitTimeout` long enough for `go build`) before `Hide` and the first `Type`; a `Set` after them is ignored.",
+      "description": "Puts every `Set` before `Hide` and the first `Type` (a `Set` after them is ignored), and gives the build wait a timeout long enough for `go build`, either `Set WaitTimeout` or an inline timeout such as `Wait+Screen@2m`.",
       "max_score": 2,
       "category": "DESIGN"
     },
@@ -40,7 +40,7 @@
     },
     {
       "name": "artifact_upload",
-      "description": "Uploads `demo.gif` (and the PNG) with `actions/upload-artifact`.",
+      "description": "Uploads `demo.gif` with `actions/upload-artifact`.",
       "max_score": 1,
       "category": "INTEGRATION"
     }
