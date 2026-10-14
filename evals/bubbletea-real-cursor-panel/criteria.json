@@ -1,0 +1,42 @@
+{
+  "context": "Placing the terminal's real cursor on a text input inside a centered panel",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "real_cursor_from_input",
+      "description": "Turns off the input's simulated cursor with `SetVirtualCursor(false)` and takes `Cursor()` from the input on each render, assigning it to the `Cursor` field of the returned `tea.View`; does not leave the input drawing its own cursor.",
+      "max_score": 4,
+      "category": "EDGE_CASE"
+    },
+    {
+      "name": "cursor_offset",
+      "description": "Offsets the cursor by the input's position on screen: the panel's centering offset plus its border and padding and any lines above the input inside the panel, so the cursor lands on the typed character rather than at the panel's top left or the window origin.",
+      "max_score": 4,
+      "category": "EDGE_CASE"
+    },
+    {
+      "name": "cursor_hidden_when_blurred",
+      "description": "Leaves the view's `Cursor` nil when the input is not focused, so no terminal cursor shows while the button has focus.",
+      "max_score": 2,
+      "category": "DESIGN"
+    },
+    {
+      "name": "focus_cmd",
+      "description": "Returns the command from the input's `Focus()` (from `Init` and when tab returns focus) and calls `Blur()` when focus leaves.",
+      "max_score": 1,
+      "category": "DESIGN"
+    },
+    {
+      "name": "result_after_run",
+      "description": "Prints the entered name after `Run` returns, from the final model, not from inside `Update` or `View`.",
+      "max_score": 1,
+      "category": "INTENT"
+    },
+    {
+      "name": "alt_screen_field",
+      "description": "Enables the alternate screen with `AltScreen = true` on the returned `tea.View`.",
+      "max_score": 1,
+      "category": "INTENT"
+    }
+  ]
+}

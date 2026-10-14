@@ -1,0 +1,48 @@
+{
+  "context": "A Glamour viewer that follows streamed content and adapts to the terminal from inside the program",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "follow_unless_scrolled",
+      "description": "Checks whether the viewport was at the bottom (`AtBottom()` or an equivalent test taken before the content changes) and only then calls `GotoBottom()` after an append, so a user who scrolled up keeps their position.",
+      "max_score": 3,
+      "category": "EDGE_CASE"
+    },
+    {
+      "name": "renderer_reused",
+      "description": "Builds the Glamour renderer when the width or the background changes and reuses it for the appends; does not create a new `TermRenderer` on every message.",
+      "max_score": 2,
+      "category": "DESIGN"
+    },
+    {
+      "name": "rerender_either_order",
+      "description": "Re-renders in both the `tea.BackgroundColorMsg` handler and the `tea.WindowSizeMsg` handler, because the two arrive in either order; rendering only on resize leaves a dark terminal with the light or default style.",
+      "max_score": 3,
+      "category": "EDGE_CASE"
+    },
+    {
+      "name": "narrow_width_clamp",
+      "description": "Clamps the wrap width passed to `WithWordWrap` to a positive minimum, because `0` disables wrapping and a negative width is wrong; keeps the viewport usable at ten columns.",
+      "max_score": 2,
+      "category": "EDGE_CASE"
+    },
+    {
+      "name": "background_from_message",
+      "description": "Detects light or dark with `tea.RequestBackgroundColor` and `tea.BackgroundColorMsg.IsDark()` and passes `WithStandardStyle(\"dark\")` or `\"light\"` explicitly; does not call `lipgloss.HasDarkBackground` while the program runs.",
+      "max_score": 2,
+      "category": "MUST_NOT"
+    },
+    {
+      "name": "tick_rearmed",
+      "description": "Schedules each append with a command (`tea.Tick` or `tea.Every`) that is re-armed from the handler, stopping after ten.",
+      "max_score": 1,
+      "category": "DESIGN"
+    },
+    {
+      "name": "v2_import",
+      "description": "Imports `charm.land/glamour/v2` and `charm.land/bubbles/v2/viewport`.",
+      "max_score": 1,
+      "category": "INTENT"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "context": "Charm Log lines shown in a TUI pane with colors, and in a plain file",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "pane_profile_forced",
+      "description": "Sets the pane logger's color profile explicitly (for example `SetColorProfile(colorprofile.TrueColor)`), because a logger built on a buffer, pipe, or custom writer detects no terminal and emits plain text; the Bubble Tea renderer downsamples the colors when the pane is drawn.",
+      "max_score": 4,
+      "category": "EDGE_CASE"
+    },
+    {
+      "name": "file_plain",
+      "description": "Writes `app.log` through a logger built on the file (or with a plain profile), so the file has no escape codes; does not reuse the colored pane logger's output for the file.",
+      "max_score": 2,
+      "category": "DESIGN"
+    },
+    {
+      "name": "goroutine_safe_delivery",
+      "description": "Delivers lines from the worker goroutines to the model through messages (`p.Send`, a channel read by a command, or a writer that sends messages) or a mutex guarded buffer; `View` does not read a buffer that goroutines write without synchronization.",
+      "max_score": 3,
+      "category": "EDGE_CASE"
+    },
+    {
+      "name": "no_terminal_output",
+      "description": "No logger writes to stdout or stderr while the program runs, and the package level logger is not left pointing at stderr if it is used.",
+      "max_score": 2,
+      "category": "MUST_NOT"
+    },
+    {
+      "name": "last_twenty",
+      "description": "Keeps only the last twenty lines for the pane and sizes the pane from `tea.WindowSizeMsg`.",
+      "max_score": 1,
+      "category": "INTENT"
+    },
+    {
+      "name": "v2_import",
+      "description": "Imports `charm.land/log/v2` and `charm.land/bubbletea/v2`.",
+      "max_score": 1,
+      "category": "INTENT"
+    }
+  ]
+}
