@@ -1,0 +1,42 @@
+{
+  "context": "A filterable Bubbles list with a spinner that must keep animating",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "keys_respect_filtering",
+      "description": "Checks whether the list is editing its filter (`SettingFilter()` or `FilterState() == list.Filtering`) before acting on enter or other keys, so typing a filter and confirming it with enter still reach the list.",
+      "max_score": 4,
+      "category": "EDGE_CASE"
+    },
+    {
+      "name": "spinner_keeps_ticking",
+      "description": "Starts the spinner with its `Tick` from `Init` and passes every message (not only key presses) through `spinner.Update`, storing the returned model and returning its command, so the spinner animates while the list has focus.",
+      "max_score": 3,
+      "category": "INTEGRATION"
+    },
+    {
+      "name": "list_sized",
+      "description": "Sizes the list from `tea.WindowSizeMsg` with `SetSize` (or `SetWidth` and `SetHeight`) instead of leaving it at zero.",
+      "max_score": 1,
+      "category": "DESIGN"
+    },
+    {
+      "name": "models_stored_back",
+      "description": "Stores the models returned by `list.Update` and `spinner.Update` back into the parent model and batches their commands.",
+      "max_score": 1,
+      "category": "DESIGN"
+    },
+    {
+      "name": "result_from_selected_item",
+      "description": "On enter outside filtering, reads `SelectedItem()` and prints the name after `Run` returns, not from inside `Update`.",
+      "max_score": 1,
+      "category": "INTENT"
+    },
+    {
+      "name": "v2_imports",
+      "description": "Imports `charm.land/bubbles/v2/list`, `charm.land/bubbles/v2/spinner`, and `charm.land/bubbletea/v2`.",
+      "max_score": 1,
+      "category": "INTENT"
+    }
+  ]
+}

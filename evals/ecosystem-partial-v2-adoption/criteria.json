@@ -1,0 +1,42 @@
+{
+  "context": "Mixing Charm v2 modules into an application still on v1",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "shared_types_rule",
+      "description": "States that Bubble Tea, Bubbles, Huh, and Lip Gloss share types and move together: a Huh v2 form can run standalone with `Run` next to the v1 TUI, but embedding it in the v1 Bubble Tea program is impossible because Huh v2 is built on Bubble Tea v2 and Lip Gloss v2.",
+      "max_score": 4,
+      "category": "EDGE_CASE"
+    },
+    {
+      "name": "log_v2_standalone",
+      "description": "Says Charm Log v2 can be added now, and that customizing its `Styles` needs Lip Gloss v2 values, not the app's v1 styles.",
+      "max_score": 2,
+      "category": "DESIGN"
+    },
+    {
+      "name": "charm_land_paths",
+      "description": "Uses `charm.land/huh/v2` and `charm.land/log/v2` in the `go get` command, not `github.com/charmbracelet/...` paths, which stop before v2.",
+      "max_score": 2,
+      "category": "INTENT"
+    },
+    {
+      "name": "pinned_versions",
+      "description": "Pins explicit versions in the `go get` command (current releases: huh v2.0.3, log v2.0.1) instead of `@latest`.",
+      "max_score": 2,
+      "category": "DESIGN"
+    },
+    {
+      "name": "coexistence_mechanics",
+      "description": "Explains that v1 and v2 are separate modules that can coexist in one binary, and that passing a `Style` or model across the boundary is a compile error naming both paths.",
+      "max_score": 1,
+      "category": "DESIGN"
+    },
+    {
+      "name": "github_paths_kept",
+      "description": "Notes that `colorprofile` (and Harmonica) keep their `github.com/charmbracelet/...` paths; only the libraries above moved to `charm.land`.",
+      "max_score": 1,
+      "category": "EDGE_CASE"
+    }
+  ]
+}

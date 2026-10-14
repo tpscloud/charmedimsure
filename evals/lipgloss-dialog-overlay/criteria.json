@@ -1,0 +1,36 @@
+{
+  "context": "A modal dialog drawn over a styled full screen view",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "overlay_preserves_ansi",
+      "description": "Composes the dialog over the pane with Lip Gloss layers (`NewLayer`, `NewCompositor`, `Render`) or an ANSI aware cut of each background line (for example `ansi.Truncate` or `ansi.Cut`), never by slicing rendered strings by byte or rune index, which cuts through escape sequences and shifts the columns.",
+      "max_score": 4,
+      "category": "EDGE_CASE"
+    },
+    {
+      "name": "hit_test",
+      "description": "Decides inside or outside from the dialog's actual placement, for example `Compositor.Hit(x, y)` or the same offsets used to position the dialog, rather than hard coded coordinates.",
+      "max_score": 2,
+      "category": "DESIGN"
+    },
+    {
+      "name": "mouse_via_view",
+      "description": "Enables mouse reporting with the `MouseMode` field on the returned `tea.View` (v2 has no `WithMouseCellMotion` option) and handles `tea.MouseClickMsg`.",
+      "max_score": 1,
+      "category": "DESIGN"
+    },
+    {
+      "name": "background_via_message",
+      "description": "Detects light or dark with `tea.RequestBackgroundColor` and `tea.BackgroundColorMsg`; does not call `lipgloss.HasDarkBackground` on the terminal while the program runs.",
+      "max_score": 3,
+      "category": "MUST_NOT"
+    },
+    {
+      "name": "v2_import",
+      "description": "Imports `charm.land/lipgloss/v2` and `charm.land/bubbletea/v2`.",
+      "max_score": 1,
+      "category": "INTENT"
+    }
+  ]
+}

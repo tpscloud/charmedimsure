@@ -1,0 +1,42 @@
+{
+  "context": "Environment picker whose result is captured by a shell script",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "ui_not_on_stdout",
+      "description": "Renders the UI somewhere other than stdout, for example `tea.WithOutput(os.Stderr)`, so `$(...)` captures only the result and not the frames.",
+      "max_score": 4,
+      "category": "EDGE_CASE"
+    },
+    {
+      "name": "result_after_run",
+      "description": "Prints the result after `Run` returns, reading it from the returned final model (type asserted back to the model type), not from inside `Update` or `View`.",
+      "max_score": 3,
+      "category": "DESIGN"
+    },
+    {
+      "name": "no_print_in_program",
+      "description": "Does not print the result with `fmt.Print*` inside `Update` or `View`, and does not rely on `tea.Println` or `tea.Printf`, which print nothing while the alternate screen is active.",
+      "max_score": 2,
+      "category": "MUST_NOT"
+    },
+    {
+      "name": "space_key_name",
+      "description": "Matches the space key by its v2 name `space` (or by its `Code`), never by the string `\" \"`, which is the v1 name and never matches a v2 `KeyPressMsg`.",
+      "max_score": 2,
+      "category": "MUST_NOT"
+    },
+    {
+      "name": "alt_screen_field",
+      "description": "Enables the alternate screen by setting `AltScreen = true` on the returned `tea.View`, not with a v1 program option or command.",
+      "max_score": 1,
+      "category": "DESIGN"
+    },
+    {
+      "name": "cancel_exit_code",
+      "description": "Handles `ctrl+c` explicitly (raw mode delivers it as a key press) and exits 1 without printing on `q`, `esc`, or `ctrl+c`.",
+      "max_score": 1,
+      "category": "INTENT"
+    }
+  ]
+}

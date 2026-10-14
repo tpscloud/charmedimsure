@@ -1,0 +1,42 @@
+{
+  "context": "A Glamour viewer component that adapts to the terminal from inside a running program",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "background_from_message",
+      "description": "Gets light or dark from `tea.RequestBackgroundColor` (returned from `Init`) and `tea.BackgroundColorMsg.IsDark()`, and passes `WithStandardStyle(\"dark\")` or `\"light\"` explicitly to the renderer.",
+      "max_score": 3,
+      "category": "DESIGN"
+    },
+    {
+      "name": "no_terminal_query",
+      "description": "Does not call `lipgloss.HasDarkBackground(os.Stdin, os.Stdout)` or otherwise query the terminal from the component or from inside the running program.",
+      "max_score": 2,
+      "category": "MUST_NOT"
+    },
+    {
+      "name": "rerender_either_order",
+      "description": "Re-renders in both the `BackgroundColorMsg` handler and the `WindowSizeMsg` handler, because the two messages arrive in either order; rendering only on resize leaves a dark terminal with the light (or default) style until the next resize.",
+      "max_score": 4,
+      "category": "EDGE_CASE"
+    },
+    {
+      "name": "wrap_follows_width",
+      "description": "Builds the renderer with `WithWordWrap` from the current window width (clamped to a positive minimum) and renders again on resize, instead of a fixed wrap such as 80.",
+      "max_score": 2,
+      "category": "DESIGN"
+    },
+    {
+      "name": "viewport_content",
+      "description": "Hands the rendered string to `viewport.SetContent` and sizes the viewport from `WindowSizeMsg`.",
+      "max_score": 1,
+      "category": "INTEGRATION"
+    },
+    {
+      "name": "v2_import",
+      "description": "Imports `charm.land/glamour/v2` (and `charm.land/bubbles/v2/viewport`).",
+      "max_score": 1,
+      "category": "INTENT"
+    }
+  ]
+}

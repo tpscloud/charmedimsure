@@ -1,0 +1,48 @@
+{
+  "context": "A vhs tape that builds and records an alternate screen program, rendered in CI",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "build_sentinel",
+      "description": "Makes the recording depend on build success: chains a sentinel after the build (`go build ... && echo <sentinel>`) and waits for it with `Wait+Screen`, with the typed command spelled so the sentinel text does not appear in the command line itself (for example `build-''ok`), so the wait cannot match the echoed command before the build finishes. Waiting for the prompt after the build does not meet this: a failed build returns to the prompt too.",
+      "max_score": 4,
+      "category": "EDGE_CASE"
+    },
+    {
+      "name": "no_prompt_wait_in_alt",
+      "description": "After launching the program, waits for text it draws (`Wait+Screen /Ready/`) rather than `Wait` on the shell prompt, which never appears in the alternate screen, and uses `Wait+Screen` or a `Sleep` before the screenshot and the quit.",
+      "max_score": 2,
+      "category": "EDGE_CASE"
+    },
+    {
+      "name": "hide_build",
+      "description": "Wraps the build and a `clear` in `Hide` and `Show` so they are not recorded.",
+      "max_score": 1,
+      "category": "DESIGN"
+    },
+    {
+      "name": "require_output_screenshot",
+      "description": "Declares `Output demo.gif`, `Require go`, and takes the PNG with `Screenshot`.",
+      "max_score": 1,
+      "category": "INTENT"
+    },
+    {
+      "name": "settings_first_timeout",
+      "description": "Puts every `Set` (including a `Set WaitTimeout` long enough for `go build`) before `Hide` and the first `Type`; a `Set` after them is ignored.",
+      "max_score": 2,
+      "category": "DESIGN"
+    },
+    {
+      "name": "ci_pinned_no_publish",
+      "description": "Pins the vhs version in CI (for example `version: v0.12.1` on `charmbracelet/vhs-action`, with the action pinned by SHA or tag) and does not pass `--publish` or `-p` or set `VHS_PUBLISH`.",
+      "max_score": 3,
+      "category": "MUST_NOT"
+    },
+    {
+      "name": "artifact_upload",
+      "description": "Uploads `demo.gif` (and the PNG) with `actions/upload-artifact`.",
+      "max_score": 1,
+      "category": "INTEGRATION"
+    }
+  ]
+}

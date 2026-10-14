@@ -1,0 +1,54 @@
+{
+  "context": "A gum script whose cancellation, timeout, and piping behavior must be right",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "table_empty_check",
+      "description": "Treats an empty result from `gum table` as a cancel (for example `[[ -n $row ]] || exit 1`), because Esc or q exits 0 with an empty line, instead of relying on the exit status alone.",
+      "max_score": 3,
+      "category": "EDGE_CASE"
+    },
+    {
+      "name": "exit_status_chained",
+      "description": "Checks the exit status of every interactive gum call (`|| exit 1` or equivalent) so Ctrl+C (130) and Esc stop the script before anything is applied.",
+      "max_score": 2,
+      "category": "EDGE_CASE"
+    },
+    {
+      "name": "no_limit_empty_ok",
+      "description": "Uses `gum choose --no-limit` for the labels and treats an empty selection as valid (no labels), not as an error.",
+      "max_score": 1,
+      "category": "DESIGN"
+    },
+    {
+      "name": "toggle_keys",
+      "description": "Tells the user that `x` or tab toggles a label (and `a` selects all) in `gum choose`; does not say space or Ctrl+Space, which do nothing in gum 2.x.",
+      "max_score": 2,
+      "category": "EDGE_CASE"
+    },
+    {
+      "name": "confirm_timeout_default",
+      "description": "Passes `--timeout 10s` to `gum confirm` and leaves the default negative (no `--default`), so a timeout declines rather than applies.",
+      "max_score": 2,
+      "category": "DESIGN"
+    },
+    {
+      "name": "spin_show_error",
+      "description": "Runs the command with `gum spin --show-output --show-error` (or `--show-error` with a stream flag), because `--show-output` alone discards a failing command's output, and checks the exit status afterwards.",
+      "max_score": 2,
+      "category": "DESIGN"
+    },
+    {
+      "name": "banner_colors_when_piped",
+      "description": "Keeps the `gum style` banner colored when stdout is not a terminal by setting `CLICOLOR_FORCE=1` for that command or the script, because gum strips ANSI when piped.",
+      "max_score": 2,
+      "category": "EDGE_CASE"
+    },
+    {
+      "name": "quotes_and_errexit",
+      "description": "Quotes the captured variables, and if `set -e` is used keeps `gum confirm` inside an `if` or an `||` so a declined confirm exits cleanly instead of aborting with an error.",
+      "max_score": 1,
+      "category": "DESIGN"
+    }
+  ]
+}

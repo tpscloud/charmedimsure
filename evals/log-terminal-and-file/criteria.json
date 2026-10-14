@@ -1,0 +1,42 @@
+{
+  "context": "Colored terminal logging plus a plain text log file from one CLI",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "profile_per_writer",
+      "description": "Gives each destination its own color profile: either a logger per writer (`log.New(os.Stderr)` and `log.New(file)`, with a small fan out), or a single logger whose file side strips escape codes (for example `ansi.Strip`) while the profile is set for the terminal. A single logger on `io.MultiWriter` detects no terminal and writes plain text to both, or ANSI to both if a profile is forced.",
+      "max_score": 4,
+      "category": "EDGE_CASE"
+    },
+    {
+      "name": "no_multiwriter_logger",
+      "description": "Does not create one Charm logger over `io.MultiWriter(os.Stderr, file)` as the only logger without handling the profile difference.",
+      "max_score": 2,
+      "category": "MUST_NOT"
+    },
+    {
+      "name": "level_both",
+      "description": "Applies the level from `--verbose` to every logger (`log.DebugLevel` or `log.InfoLevel`), so the file and the terminal agree.",
+      "max_score": 1,
+      "category": "INTENT"
+    },
+    {
+      "name": "timestamps",
+      "description": "Enables timestamps on every logger (`ReportTimestamp: true` or `SetReportTimestamp(true)`); `log.New` has them off by default.",
+      "max_score": 1,
+      "category": "DESIGN"
+    },
+    {
+      "name": "even_kv",
+      "description": "Passes key value pairs in even numbers after the message; an odd count prints `ErrMissingValue`.",
+      "max_score": 1,
+      "category": "DESIGN"
+    },
+    {
+      "name": "v2_import",
+      "description": "Imports `charm.land/log/v2`, not `github.com/charmbracelet/log`.",
+      "max_score": 1,
+      "category": "INTENT"
+    }
+  ]
+}

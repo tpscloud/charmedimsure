@@ -1,0 +1,42 @@
+{
+  "context": "A Huh form with dependent options, accessible mode, and script friendly output",
+  "type": "weighted_checklist",
+  "checklist": [
+    {
+      "name": "dynamic_options_binding",
+      "description": "Uses `OptionsFunc` on the region select with a pointer to the provider variable as the binding (`OptionsFunc(fn, &provider)`), in the same form, so the choices refresh when the provider changes. Two forms run one after the other, or a binding passed by value (which compiles but never refreshes), do not meet this.",
+      "max_score": 4,
+      "category": "EDGE_CASE"
+    },
+    {
+      "name": "prompts_off_stdout",
+      "description": "Calls `WithOutput(os.Stderr)` on the form and on the spinner, because accessible prompts default to stdout while the TUI defaults to stderr, so stdout carries only the result in both modes.",
+      "max_score": 3,
+      "category": "EDGE_CASE"
+    },
+    {
+      "name": "accessible_only_when_set",
+      "description": "Calls `WithAccessible` only when `ACCESSIBLE` is present (for example `os.LookupEnv`), keeping the `TERM=dumb` default that `NewForm` applies.",
+      "max_score": 1,
+      "category": "DESIGN"
+    },
+    {
+      "name": "cancel_handling",
+      "description": "Handles `huh.ErrUserAborted` from `Run` with a non-zero exit, and also checks the bound values after `Run`, because accessible mode returns nil on EOF without validation and never returns `ErrUserAborted`.",
+      "max_score": 2,
+      "category": "EDGE_CASE"
+    },
+    {
+      "name": "huh_spinner",
+      "description": "Runs the simulated work under `charm.land/huh/v2/spinner` (`spinner.New().Title(...)` with `Action` or `ActionWithErr`), not a hand written Bubble Tea program.",
+      "max_score": 1,
+      "category": "DESIGN"
+    },
+    {
+      "name": "typed_select",
+      "description": "Uses `huh.NewSelect[string]()` (or another type parameter) with `Value(&v)` bindings for the answers.",
+      "max_score": 1,
+      "category": "INTENT"
+    }
+  ]
+}
