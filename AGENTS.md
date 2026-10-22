@@ -162,3 +162,11 @@ unrelated skills into one commit.
    `.skill-quality.json`, `skills.sh.json`, and `.tessl-plugin/plugin.json`,
    and a `LICENSES/MIT.txt` and `NOTICE.md` like the other skills.
 4. Run validation and the configured checks, then commit.
+
+## Excluded scanner dependency
+
+Do not install or run `cisco-ai-skill-scanner` (`skill-scanner`), including
+through `uvx`, CI, or review workflows. It depends on LiteLLM, which the owner
+excludes following the October 2026 supply-chain incident. Keep prior scanner
+reports as historical evidence. Use the remaining project checks without
+introducing LiteLLM as a direct or transitive dependency.
